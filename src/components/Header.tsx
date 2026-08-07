@@ -46,7 +46,7 @@ export default function Header() {
                         : "border-b border-transparent"
                 }`}
             >
-                <nav className="mx-auto flex h-18 max-w-[1240px] items-center justify-between px-5 sm:px-8">
+                <nav className="mx-auto flex h-18 max-w-[1240px] items-center justify-between px-6 sm:px-10 lg:px-14">
                     <a href="#inicio" className="group flex items-baseline gap-2.5">
                         <span className="tipo-display text-[1.0625rem] leading-none sm:text-lg">
                             {ESTUDIO}

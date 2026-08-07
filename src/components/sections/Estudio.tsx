@@ -1,4 +1,7 @@
+import { ChatCircleDots, Compass, Eye, Lock } from "@phosphor-icons/react/dist/ssr";
 import { DECLARACION, valores } from "@/lib/contenido";
+
+const iconos = { Lock, ChatCircleDots, Compass, Eye } as const;
 
 /**
  * Declaracion a ancho completo y despues los valores en una fila dividida por
@@ -15,7 +18,7 @@ export default function Estudio() {
     return (
         <section
             id="estudio"
-            className="bg-superficie px-5 py-24 sm:px-8 sm:py-32"
+            className="bg-superficie px-6 py-24 sm:px-10 sm:py-32 lg:px-14"
         >
             <div className="mx-auto max-w-[1240px]">
                 <p className="anim-scroll tipo-display-suelto max-w-[24ch] text-[1.75rem] leading-[1.25] sm:text-4xl lg:text-[2.75rem]">
@@ -34,6 +37,10 @@ export default function Estudio() {
                             className="anim-scroll border-b border-filete py-8 sm:border-b-0 sm:border-r sm:py-10 sm:pr-8 sm:last:border-r-0 lg:pr-10"
                             style={{ transitionDelay: `${i * 70}ms` }}
                         >
+                            {(() => {
+                                const Icono = iconos[v.icono as keyof typeof iconos];
+                                return <Icono size={24} weight="light" aria-hidden className="mb-4 text-acento" />;
+                            })()}
                             <h3 className="tipo-display-suelto text-xl sm:text-2xl">{v.titulo}</h3>
                             <p className="tipo-cuerpo mt-2.5 max-w-[34ch] text-[0.9375rem]">
                                 {v.texto}

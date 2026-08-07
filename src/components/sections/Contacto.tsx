@@ -77,7 +77,7 @@ export default function Contacto() {
     return (
         <section
             id="contacto"
-            className="bg-superficie px-5 py-24 sm:px-8 sm:py-32"
+            className="bg-superficie px-6 py-24 sm:px-10 sm:py-32 lg:px-14"
         >
             <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-12 lg:gap-20">
                 <div className="anim-scroll lg:col-span-5">

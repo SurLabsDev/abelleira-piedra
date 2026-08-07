@@ -25,6 +25,8 @@ export const PLAZO_RESPUESTA = "";
 export interface Area {
     id: string;
     titulo: string;
+    /** Nombre del icono de Phosphor. El mapa esta en Areas.tsx. */
+    icono: string;
     resumen: string;
     /** Lo que diria un cliente, no lo que diria un abogado. PENDIENTE (brief 1.2). */
     ejemplos: string[];
@@ -39,6 +41,7 @@ export interface Area {
 export const areas: Area[] = [
     {
         id: "laboral",
+        icono: "Briefcase",
         titulo: "Derecho laboral",
         resumen:
             "Despidos, reclamos, negociaciones y litigios, del lado de la empresa o del trabajador.",
@@ -46,6 +49,7 @@ export const areas: Area[] = [
     },
     {
         id: "sucesorio",
+        icono: "Scroll",
         titulo: "Derecho sucesorio",
         resumen:
             "Sucesiones, testamentos, particiones y planificación para que el trámite no se convierta en un conflicto.",
@@ -53,6 +57,7 @@ export const areas: Area[] = [
     },
     {
         id: "inmobiliario",
+        icono: "HouseLine",
         titulo: "Derecho inmobiliario",
         resumen:
             "Compraventas, arrendamientos, títulos, fideicomisos y desarrollos, desde la promesa hasta la escritura.",
@@ -60,6 +65,7 @@ export const areas: Area[] = [
     },
     {
         id: "comercial",
+        icono: "Buildings",
         titulo: "Derecho comercial",
         resumen:
             "Sociedades, contratos, reestructuras y la operativa diaria de una empresa que necesita respaldo.",
@@ -67,6 +73,7 @@ export const areas: Area[] = [
     },
     {
         id: "civil",
+        icono: "Handshake",
         titulo: "Derecho civil",
         resumen:
             "Contratos, obligaciones, responsabilidad civil, daños y perjuicios.",
@@ -74,6 +81,7 @@ export const areas: Area[] = [
     },
     {
         id: "litigios",
+        icono: "Gavel",
         titulo: "Litigios",
         resumen:
             "Representación en juicio y en arbitraje, cuando ya no queda margen para acordar.",
@@ -120,18 +128,22 @@ export const DECLARACION =
 
 export const valores = [
     {
+        icono: "Lock",
         titulo: "Reserva",
         texto: "Cada asunto se maneja con la discreción que el caso exige, dentro y fuera del estudio.",
     },
     {
+        icono: "ChatCircleDots",
         titulo: "Respuesta",
         texto: "Sabe a quién escribirle y cuánto va a tardar en tener una respuesta.",
     },
     {
+        icono: "Compass",
         titulo: "Criterio",
         texto: "Le decimos si conviene litigar y también si no conviene. Las dos respuestas son trabajo.",
     },
     {
+        icono: "Eye",
         titulo: "Claridad",
         texto: "Le explicamos en qué situación está y qué opciones tiene, sin lenguaje de expediente.",
     },

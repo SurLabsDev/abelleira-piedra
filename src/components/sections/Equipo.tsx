@@ -1,20 +1,33 @@
+import { UserFocus } from "@phosphor-icons/react/dist/ssr";
 import { equipo } from "@/lib/contenido";
 
 /**
- * Equipo resuelto con tipografia, no con fotos de banco de imagenes.
+ * Cada integrante lleva un lugar reservado con forma de retrato.
  *
- * Hoy no hay retratos. La demo llenaba el hueco con un cuadrado gris con las
- * iniciales, que es peor que no tener nada: se lee como una web sin terminar.
- * Aca el nombre carga la seccion y queda lugar reservado para el retrato: si el
- * estudio hace la sesion (brief 1.2), la foto entra arriba de cada bloque sin
- * tocar el resto del layout.
+ * NO es una foto de banco de imagenes: poner una cara de stock y presentarla
+ * como socia del estudio es directamente mentir, y si eso llega a produccion el
+ * problema es del cliente. Es un espacio con la proporcion 3:4 de un retrato,
+ * las iniciales, y el rotulo "Foto pendiente" a la vista.
  *
- * Los nombres son de relleno a proposito, con la misma forma que traia la demo,
- * para que nadie los confunda con datos reales en una presentacion.
+ * Que se vea el hueco tiene dos funciones. La seccion deja de leerse como una
+ * lista de nombres sueltos, y el estudio entiende de una que ahi va su cara, que
+ * es exactamente lo que hay que empujar para que acepten la sesion (brief 1.2).
+ * Cuando lleguen las fotos, entran en este mismo lugar sin tocar el layout.
  */
+
+function iniciales(nombre: string) {
+    return nombre
+        .replace(/^(Dr|Dra|Esc)\.?\s*/i, "")
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((p) => p[0])
+        .join("")
+        .toUpperCase();
+}
+
 export default function Equipo() {
     return (
-        <section id="equipo" className="px-5 py-24 sm:px-8 sm:py-32">
+        <section id="equipo" className="px-6 py-24 sm:px-10 sm:py-32 lg:px-14">
             <div className="mx-auto max-w-[1240px]">
                 <div className="anim-scroll max-w-[40ch]">
                     <h2 className="tipo-display-suelto text-[2rem] sm:text-5xl">
@@ -26,20 +39,37 @@ export default function Equipo() {
                     </p>
                 </div>
 
-                <div className="mt-12 grid gap-px border border-filete bg-filete sm:mt-16 sm:grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+                {/* auto-fit y no columnas fijas: los filetes son el fondo asomando
+                    por el gap, asi que con 3 o 5 integrantes las columnas fijas
+                    dejaban celdas pintadas del color del filete. El estudio todavia
+                    no confirmo cuantos son (brief 1.1). */}
+                <div className="mt-12 grid gap-px border border-filete bg-filete sm:mt-16 sm:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
                     {equipo.map((p, i) => (
                         <article
                             key={`${p.nombre}-${i}`}
-                            className="anim-scroll flex min-h-[13rem] flex-col justify-between bg-fondo p-7 transition-colors duration-300 hover:bg-superficie"
+                            className="anim-scroll group bg-fondo"
                             style={{ transitionDelay: `${i * 70}ms` }}
                         >
                             {/* PENDIENTE (brief 1.2): retrato profesional, 3:4. */}
-                            <p className="tipo-etiqueta">{p.areas}</p>
-                            <div className="mt-10">
-                                <h3 className="tipo-display-suelto text-[1.375rem] leading-tight">
+                            <div className="relative flex aspect-[4/5] flex-col items-center justify-center overflow-hidden bg-superficie">
+                                <span
+                                    aria-hidden
+                                    className="tipo-display-suelto text-[2.75rem] text-texto/18 transition-colors duration-500 group-hover:text-texto/20"
+                                >
+                                    {iniciales(p.nombre)}
+                                </span>
+                                <span className="absolute bottom-3 flex items-center gap-1.5 text-[0.625rem] uppercase tracking-[0.14em] text-tenue/70">
+                                    <UserFocus size={12} weight="light" aria-hidden />
+                                    Foto pendiente
+                                </span>
+                            </div>
+
+                            <div className="p-6">
+                                <p className="tipo-etiqueta">{p.areas}</p>
+                                <h3 className="tipo-display-suelto mt-3 text-[1.25rem] leading-tight">
                                     {p.nombre}
                                 </h3>
-                                <p className="tipo-cuerpo mt-1.5 text-sm">{p.rol}</p>
+                                <p className="tipo-cuerpo mt-1 text-sm">{p.rol}</p>
                             </div>
                         </article>
                     ))}

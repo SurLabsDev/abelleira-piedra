@@ -22,6 +22,7 @@
   --color-filete: var(--t-filete);
   /* Los bordes de un control necesitan 3:1, mucho mas que un filete decorativo. */
   --color-borde-control: var(--t-borde-control);
+  --opacity-foto: var(--t-foto-op);
 
   --font-display: var(--t-display);
   --font-cuerpo: var(--t-cuerpo);
@@ -41,30 +42,34 @@
   --t-acento-fg: #0b1b2e;
   --t-filete: rgb(232 228 220 / 0.14);
   --t-borde-control: rgb(232 228 220 / 0.45);
+  --t-foto-op: 0.42;
   --t-display: var(--font-lora);
   --t-cuerpo: var(--font-inter-tight);
   color-scheme: dark;
 }
 
-/* B. Tribunal. Verde profundo y hueso, sin metal. El acento es el hueso.
+/* B. Archivo. Tabaco profundo, crema y cobre. Reemplaza a una version verde que
+   no convencio. Es el camino calido: la gravedad la carga la profundidad del
+   fondo, no un metal ni un azul. Se apoya bien en la foto de archivo del hero.
 
    El default va con html:not([data-tema]) y NO con :root. Con :root este bloque
-   le ganaba a [data-tema="institucional"]: misma especificidad, y como el de
-   tribunal esta escrito despues, pisaba al de arriba. El sitio pedia
-   institucional y pintaba verde. Con :not() el default solo aplica cuando de
-   verdad no hay tema, y no compite con ninguno. */
+   le ganaba a [data-tema="institucional"]: misma especificidad, y como esta
+   escrito despues, pisaba al de arriba. El sitio pedia institucional y pintaba
+   la otra. Con :not() el default solo aplica cuando de verdad no hay tema. */
 html:not([data-tema]),
-[data-tema="tribunal"] {
-  --t-fondo: #0e2a21;
-  --t-superficie: #153629;
-  --t-texto: #f1eee4;
-  --t-tenue: #9bafa3;
-  --t-acento: #f1eee4;
-  --t-acento-fg: #0e2a21;
-  --t-filete: rgb(241 238 228 / 0.16);
-  --t-borde-control: rgb(241 238 228 / 0.45);
+[data-tema="archivo"] {
+  --t-fondo: #241c17;
+  --t-superficie: #2f2620;
+  --t-texto: #f1eae0;
+  --t-tenue: #aa9c8d;
+  --t-acento: #ce8b4e;
+  --t-acento-fg: #201812;
+  --t-filete: rgb(241 234 224 / 0.15);
+  --t-borde-control: rgb(241 234 224 / 0.45);
   --t-display: var(--font-instrument);
   --t-cuerpo: var(--font-instrument);
+  /* Cuanto se deja ver la foto del hero detras de la cortina de color. */
+  --t-foto-op: 0.55;
   color-scheme: dark;
 }
 
@@ -78,6 +83,7 @@ html:not([data-tema]),
   --t-acento-fg: #ffffff;
   --t-filete: rgb(25 26 29 / 0.14);
   --t-borde-control: rgb(25 26 29 / 0.50);
+  --t-foto-op: 0.16;
   --t-display: var(--font-newsreader);
   --t-cuerpo: var(--font-inter-tight);
   color-scheme: light;
@@ -93,6 +99,7 @@ html:not([data-tema]),
   --t-acento-fg: #ffffff;
   --t-filete: rgb(20 22 26 / 0.13);
   --t-borde-control: rgb(20 22 26 / 0.48);
+  --t-foto-op: 0.14;
   --t-display: var(--font-geist);
   --t-cuerpo: var(--font-geist);
   color-scheme: light;

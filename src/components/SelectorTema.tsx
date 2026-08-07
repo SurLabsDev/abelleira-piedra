@@ -17,12 +17,12 @@ import { useState, useSyncExternalStore } from "react";
  * afuera de React y evita el setState dentro de un efecto.
  */
 
-export const TEMA_POR_DEFECTO = "tribunal";
+export const TEMA_POR_DEFECTO = "archivo";
 export const CLAVE_TEMA = "ap-tema";
 
 const temas = [
     { id: "institucional", label: "A. Institucional", punto: "#c3a265", fondo: "#0b1b2e" },
-    { id: "tribunal", label: "B. Tribunal", punto: "#f1eee4", fondo: "#0e2a21" },
+    { id: "archivo", label: "B. Archivo", punto: "#ce8b4e", fondo: "#241c17" },
     { id: "expediente", label: "C. Expediente", punto: "#8a2233", fondo: "#f4f2ed" },
     { id: "abierto", label: "D. Estudio abierto", punto: "#1b4965", fondo: "#fbfaf8" },
 ] as const;

@@ -1,7 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import {
+    Briefcase, Buildings, Gavel, Handshake, HouseLine, Scroll,
+} from "@phosphor-icons/react/dist/ssr";
 import { areas } from "@/lib/contenido";
+
+/**
+ * Imports nombrados y un mapa explicito, no un componente dinamico por string:
+ * asi optimizePackageImports puede podar y solo viajan los seis iconos que se
+ * usan, en vez de la familia entera.
+ */
+const iconos = { Briefcase, Buildings, Gavel, Handshake, HouseLine, Scroll } as const;
 
 /**
  * Indice con panel de detalle, no seis tarjetas iguales.
@@ -21,7 +31,7 @@ export default function Areas() {
     const area = areas[activa];
 
     return (
-        <section id="areas" className="px-5 py-24 sm:px-8 sm:py-32">
+        <section id="areas" className="px-6 py-24 sm:px-10 sm:py-32 lg:px-14">
             <div className="mx-auto max-w-[1240px]">
                 <div className="anim-scroll max-w-[34ch]">
                     <h2 className="tipo-display-suelto text-[2rem] sm:text-5xl">
@@ -51,12 +61,27 @@ export default function Areas() {
                                         En Tribunal el acento ES el hueso del texto, asi que si
                                         la inactiva quedara en texto pleno el estado activo no
                                         se veria en esa paleta. Atenuar funciona en las cuatro. */}
-                                    <span
-                                        className={`tipo-display-suelto text-[1.375rem] transition-colors duration-300 sm:text-3xl ${
-                                            activa === i ? "text-acento" : "text-tenue"
-                                        }`}
-                                    >
-                                        {a.titulo}
+                                    <span className="flex items-center gap-3.5 sm:gap-4">
+                                        {(() => {
+                                            const Icono = iconos[a.icono as keyof typeof iconos];
+                                            return (
+                                                <Icono
+                                                    size={26}
+                                                    weight="light"
+                                                    aria-hidden
+                                                    className={`shrink-0 transition-colors duration-300 ${
+                                                        activa === i ? "text-acento" : "text-tenue"
+                                                    }`}
+                                                />
+                                            );
+                                        })()}
+                                        <span
+                                            className={`tipo-display-suelto text-[1.375rem] transition-colors duration-300 sm:text-3xl ${
+                                                activa === i ? "text-acento" : "text-tenue"
+                                            }`}
+                                        >
+                                            {a.titulo}
+                                        </span>
                                     </span>
                                     <span
                                         aria-hidden

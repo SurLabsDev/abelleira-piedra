@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html
             lang="es"
-            data-tema="tribunal"
+            data-tema="archivo"
             /* El script de abajo cambia data-tema antes de que React hidrate, asi
                que el atributo del servidor y el del cliente difieren a proposito.
                suppressHydrationWarning aplica solo a este elemento y un nivel de
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 */}
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `try{var q=new URLSearchParams(location.search).get('tema');var t=q||localStorage.getItem('ap-tema');var v=['institucional','tribunal','expediente','abierto'];if(t&&v.indexOf(t)>=0){document.documentElement.dataset.tema=t;if(q)localStorage.setItem('ap-tema',t)}}catch(e){}`,
+                        __html: `try{var q=new URLSearchParams(location.search).get('tema');var t=q||localStorage.getItem('ap-tema');var v=['institucional','archivo','expediente','abierto'];if(t&&v.indexOf(t)>=0){document.documentElement.dataset.tema=t;if(q)localStorage.setItem('ap-tema',t)}}catch(e){}`,
                     }}
                 />
                 {/*
