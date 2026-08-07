@@ -41,13 +41,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
             <body>
                 {/*
-                  TEMPORAL, se va junto con SelectorTema. Aplica la paleta guardada
-                  antes de que React hidrate, para que no se vea un parpadeo con la
-                  paleta por defecto en cada carga.
+                  TEMPORAL, se va junto con SelectorTema. Aplica la paleta antes de
+                  que React hidrate, para que no parpadee la de por defecto.
+
+                  ?tema= le gana a lo guardado, asi cada direccion tiene su propio
+                  enlace y el cliente la abre de una desde el formulario en vez de
+                  entrar y buscar el selector. Se valida contra la lista: un valor
+                  inventado en la URL dejaria los tokens sin resolver.
                 */}
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `try{var t=localStorage.getItem('ap-tema');if(t)document.documentElement.dataset.tema=t}catch(e){}`,
+                        __html: `try{var q=new URLSearchParams(location.search).get('tema');var t=q||localStorage.getItem('ap-tema');var v=['institucional','tribunal','expediente','abierto'];if(t&&v.indexOf(t)>=0){document.documentElement.dataset.tema=t;if(q)localStorage.setItem('ap-tema',t)}}catch(e){}`,
                     }}
                 />
                 {/*
