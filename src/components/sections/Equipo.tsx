@@ -1,20 +1,18 @@
+import { UserFocus } from "@phosphor-icons/react/dist/ssr";
 import { equipo } from "@/lib/contenido";
 
 /**
- * Retrato circular con monograma.
+ * Cada integrante lleva un lugar reservado con forma de retrato.
  *
- * La version anterior reservaba un rectangulo 4:5 vacio por persona: cuatro
- * agujeros de 400px de alto con dos iniciales flotando. Reservaba el lugar, si,
- * pero se leia como una pagina sin terminar.
+ * NO es una foto de banco de imagenes: poner una cara de stock y presentarla
+ * como socia del estudio es directamente mentir, y si eso llega a produccion el
+ * problema es del cliente. Es un espacio con la proporcion 3:4 de un retrato,
+ * las iniciales, y el rotulo "Foto pendiente" a la vista.
  *
- * El circulo resuelve las dos cosas a la vez. Vacio se lee como un avatar, que
- * es una forma que la gente entiende y que no pide disculpas. Lleno, la foto
- * recortada entra en el mismo lugar sin tocar el layout. Es ademas el recorte
- * que mejor aguanta un retrato hecho con el celular, que es lo que probablemente
- * llegue primero.
- *
- * Sigue sin haber caras de stock: presentar a un desconocido como socio del
- * estudio es mentir, y si eso llega a produccion el problema es del cliente.
+ * Que se vea el hueco tiene dos funciones. La seccion deja de leerse como una
+ * lista de nombres sueltos, y el estudio entiende de una que ahi va su cara, que
+ * es exactamente lo que hay que empujar para que acepten la sesion (brief 1.2).
+ * Cuando lleguen las fotos, entran en este mismo lugar sin tocar el layout.
  */
 
 function iniciales(nombre: string) {
@@ -41,34 +39,38 @@ export default function Equipo() {
                     </p>
                 </div>
 
-                {/* Sin cajas ni filetes entre celdas: el aire alcanza para separar y
-                    no deja rectangulos vacios cuando el equipo no es de cuatro. */}
-                <div className="mt-14 grid gap-x-8 gap-y-14 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+                {/* auto-fit y no columnas fijas: los filetes son el fondo asomando
+                    por el gap, asi que con 3 o 5 integrantes las columnas fijas
+                    dejaban celdas pintadas del color del filete. El estudio todavia
+                    no confirmo cuantos son (brief 1.1). */}
+                <div className="mt-12 grid gap-px border border-filete bg-filete sm:mt-16 sm:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
                     {equipo.map((p, i) => (
                         <article
                             key={`${p.nombre}-${i}`}
-                            className="anim-scroll group"
+                            className="anim-scroll group bg-fondo"
                             style={{ transitionDelay: `${i * 70}ms` }}
                         >
-                            {/* PENDIENTE (brief 1.2): retrato profesional, recorte 1:1. */}
-                            <div className="relative size-28 sm:size-32">
-                                <div className="flex size-full items-center justify-center rounded-full bg-superficie ring-1 ring-inset ring-filete transition-colors duration-500 group-hover:ring-acento/40">
-                                    <span
-                                        aria-hidden
-                                        className="tipo-display-suelto text-2xl text-tenue transition-colors duration-500 group-hover:text-acento sm:text-[1.75rem]"
-                                    >
-                                        {iniciales(p.nombre)}
-                                    </span>
-                                </div>
+                            {/* PENDIENTE (brief 1.2): retrato profesional, 3:4. */}
+                            <div className="relative flex aspect-[4/5] flex-col items-center justify-center overflow-hidden bg-superficie">
+                                <span
+                                    aria-hidden
+                                    className="tipo-display-suelto text-[2.75rem] text-texto/18 transition-colors duration-500 group-hover:text-texto/20"
+                                >
+                                    {iniciales(p.nombre)}
+                                </span>
+                                <span className="absolute bottom-3 flex items-center gap-1.5 text-[0.625rem] uppercase tracking-[0.14em] text-tenue/70">
+                                    <UserFocus size={12} weight="light" aria-hidden />
+                                    Foto pendiente
+                                </span>
                             </div>
 
-                            <h3 className="tipo-display-suelto mt-6 text-[1.375rem] leading-tight">
-                                {p.nombre}
-                            </h3>
-                            <p className="tipo-cuerpo mt-1.5 text-[0.9375rem]">{p.rol}</p>
-
-                            <div className="mt-4 h-px w-10 bg-acento/50" />
-                            <p className="tipo-etiqueta mt-4">{p.areas}</p>
+                            <div className="p-6">
+                                <p className="tipo-etiqueta">{p.areas}</p>
+                                <h3 className="tipo-display-suelto mt-3 text-[1.25rem] leading-tight">
+                                    {p.nombre}
+                                </h3>
+                                <p className="tipo-cuerpo mt-1 text-sm">{p.rol}</p>
+                            </div>
                         </article>
                     ))}
                 </div>

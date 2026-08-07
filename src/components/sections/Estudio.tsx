@@ -4,9 +4,14 @@ import { DECLARACION, valores } from "@/lib/contenido";
 const iconos = { Lock, ChatCircleDots, Compass, Eye } as const;
 
 /**
- * Declaracion a ancho completo y despues los valores en una fila dividida por
- * filetes. Sin tarjetas: el filete alcanza para agrupar y la caja solo agrega
- * ruido cuando no hay jerarquia real que comunicar.
+ * Declaracion a ancho completo y despues los cuatro valores.
+ *
+ * La version anterior los separaba con filetes verticales y se leia como una
+ * tabla: cuatro celdas de una planilla, no cuatro promesas. Ahora cada uno se
+ * agrupa con su propio icono dentro de un disco tenue y con aire alrededor, sin
+ * ninguna linea entre medio. El disco es el mismo recurso en las cuatro paletas
+ * porque sale del acento, y aguanta que sean tres o cinco valores sin que quede
+ * una celda vacia.
  *
  * La demo tenia estos mismos cuatro valores dos veces, una en "El estudio" y
  * otra en "Por que elegirnos". Era la misma seccion repetida con otro titulo.
@@ -16,37 +21,33 @@ const iconos = { Lock, ChatCircleDots, Compass, Eye } as const;
  */
 export default function Estudio() {
     return (
-        <section
-            id="estudio"
-            className="bg-superficie px-6 py-24 sm:px-10 sm:py-32 lg:px-14"
-        >
+        <section id="estudio" className="bg-superficie px-6 py-24 sm:px-10 sm:py-32 lg:px-14">
             <div className="mx-auto max-w-[1240px]">
                 <p className="anim-scroll tipo-display-suelto max-w-[24ch] text-[1.75rem] leading-[1.25] sm:text-4xl lg:text-[2.75rem]">
                     {DECLARACION}
                 </p>
 
-                <div
-                    className="anim-linea mt-14 h-px w-full bg-filete sm:mt-20"
-                    style={{ transitionDelay: "120ms" }}
-                />
-
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-                    {valores.map((v, i) => (
-                        <div
-                            key={v.titulo}
-                            className="anim-scroll border-b border-filete py-8 sm:border-b-0 sm:border-r sm:py-10 sm:pr-8 sm:last:border-r-0 lg:pr-10"
-                            style={{ transitionDelay: `${i * 70}ms` }}
-                        >
-                            {(() => {
-                                const Icono = iconos[v.icono as keyof typeof iconos];
-                                return <Icono size={24} weight="light" aria-hidden className="mb-4 text-acento" />;
-                            })()}
-                            <h3 className="tipo-display-suelto text-xl sm:text-2xl">{v.titulo}</h3>
-                            <p className="tipo-cuerpo mt-2.5 max-w-[34ch] text-[0.9375rem]">
-                                {v.texto}
-                            </p>
-                        </div>
-                    ))}
+                <div className="mt-16 grid gap-x-10 gap-y-12 sm:mt-24 sm:grid-cols-2 lg:grid-cols-4">
+                    {valores.map((v, i) => {
+                        const Icono = iconos[v.icono as keyof typeof iconos];
+                        return (
+                            <div
+                                key={v.titulo}
+                                className="anim-scroll group"
+                                style={{ transitionDelay: `${i * 70}ms` }}
+                            >
+                                <div className="flex size-12 items-center justify-center rounded-full bg-acento/12 ring-1 ring-inset ring-acento/25 transition-colors duration-500 group-hover:bg-acento/20">
+                                    <Icono size={22} weight="light" aria-hidden className="text-acento" />
+                                </div>
+                                <h3 className="tipo-display-suelto mt-5 text-xl sm:text-2xl">
+                                    {v.titulo}
+                                </h3>
+                                <p className="tipo-cuerpo mt-2.5 max-w-[34ch] text-[0.9375rem]">
+                                    {v.texto}
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
