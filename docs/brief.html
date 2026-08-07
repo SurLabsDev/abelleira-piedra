@@ -7,7 +7,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Instrument+Sans:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-@page { size: A4; margin: 0; }
+/* La portada sangra a full. El resto fluye con margenes de @page, para que
+   una seccion que ocupa dos hojas mantenga el margen arriba en la segunda. */
+@page { size: A4; margin: 17mm 18mm 15mm; }
+@page :first { margin: 0; }
 
 :root{
   --ink:#0d0c0b;
@@ -28,21 +31,19 @@ body{
   line-height:1.55;
 }
 
-.page{
-  width:210mm; min-height:297mm;
-  padding:20mm 18mm 16mm;
-  page-break-after:always;
-  position:relative;
-  display:flex; flex-direction:column;
+.cover{
+  width:210mm; height:297mm;
+  padding:26mm 18mm 22mm;
+  display:flex; flex-direction:column; justify-content:space-between;
+  background:var(--ink); color:var(--bone);
 }
-.page:last-child{page-break-after:auto}
+.sheet{break-before:page}
 
 h1,h2,h3,h4{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.1}
 
 .mono{font-family:"JetBrains Mono",monospace;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase}
 
 /* ---------- portada ---------- */
-.cover{justify-content:space-between;background:var(--ink);color:var(--bone)}
 .cover .mono{color:var(--ember)}
 .cover h1{font-size:31pt;line-height:1.04;margin-top:auto;max-width:15ch}
 .cover .lead{color:#b6afa4;max-width:52ch;margin-top:14px;font-size:11pt}
@@ -61,11 +62,13 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:600;lett
 .intro{font-size:10.4pt;color:var(--ink-soft);max-width:62ch;margin-bottom:20px}
 
 h2.sec{font-size:20pt;margin-bottom:4px}
-.sec-sub{color:var(--dim);font-size:9.4pt;margin-bottom:16px;max-width:58ch}
+.sec-sub{color:var(--dim);font-size:9.4pt;margin-bottom:13px;max-width:58ch}
 
 /* ---------- preguntas ---------- */
-.qgroup{margin-bottom:17px;break-inside:avoid}
-.qgroup-title{
+/* Sin break-inside:avoid aca: un grupo de 17 preguntas no entra en una hoja y
+   Chrome resuelve el conflicto dejando la anterior en blanco. Va en .q, que si entra. */
+.qgroup{margin-bottom:17px}
+.qgroup-title{break-after:avoid;
   font-family:"JetBrains Mono",monospace;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ember);border-bottom:1px solid var(--rule);padding-bottom:5px;margin-bottom:9px;
   display:flex;justify-content:space-between;
@@ -87,20 +90,20 @@ h2.sec{font-size:20pt;margin-bottom:4px}
 
 /* ---------- mapa 2x2 ---------- */
 .map{
-  border:1px solid var(--rule);border-radius:6px;padding:16px;margin:6px 0 20px;
+  border:1px solid var(--rule);border-radius:6px;padding:13px;margin:4px 0 12px;
   display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;
-  gap:16px 12px;align-items:center;font-size:8.8pt;
+  gap:11px 12px;align-items:center;font-size:8.8pt;
 }
 .map .axis-x{text-align:center;color:var(--dim);font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;padding-bottom:2px}
 .map .axis-y{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--dim);text-align:center;font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;height:100%}
-.map .cell{border:1px solid var(--rule);border-radius:4px;padding:9px 11px;min-height:52px}
+.map .cell{border:1px solid var(--rule);border-radius:4px;padding:8px 11px;min-height:46px}
 .map .cell b{display:block;font-family:"Bricolage Grotesque",serif;font-size:11pt;font-weight:600;margin-bottom:2px}
 .map .cell span{color:var(--dim);font-size:8.4pt;line-height:1.35;display:block}
 
 /* ---------- mockups de paleta ---------- */
-.dirs{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.dirs{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 .dir{break-inside:avoid}
-.mock{border-radius:6px;overflow:hidden;height:132px;display:flex;flex-direction:column;position:relative}
+.mock{border-radius:6px;overflow:hidden;height:118px;display:flex;flex-direction:column;position:relative}
 .mock .bar{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;font-size:5.6pt;letter-spacing:.08em;text-transform:uppercase}
 .mock .bar .lg{display:flex;align-items:center;gap:5px;font-weight:600;letter-spacing:.04em}
 .mock .bar .lg i{font-style:normal;font-size:9pt;line-height:1;letter-spacing:-.06em}
@@ -121,7 +124,7 @@ h2.sec{font-size:20pt;margin-bottom:4px}
 .swatches i{width:15px;height:15px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,.09)}
 .swatches code{font-family:"JetBrains Mono",monospace;font-size:6.6pt;color:var(--dim);margin-left:3px}
 
-.note{border-left:2px solid var(--ember);padding:9px 0 9px 12px;margin-top:16px;font-size:9pt;color:var(--ink-soft);max-width:62ch}
+.note{border-left:2px solid var(--ember);padding:8px 0 8px 12px;margin-top:8px;font-size:9pt;color:var(--ink-soft);max-width:62ch}
 .note b{font-weight:600;color:var(--ink)}
 
 /* ---------- pasos ---------- */
@@ -132,14 +135,14 @@ h2.sec{font-size:20pt;margin-bottom:4px}
 .step h4{font-size:11.5pt;margin-bottom:2px}
 .step p{font-size:9pt;color:var(--ink-soft);max-width:58ch}
 
-.foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--dim)}
+.foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--dim)}
 .foot b{font-weight:600;color:var(--ink);display:block;font-size:9pt}
 </style>
 </head>
 <body>
 
 <!-- ============ PORTADA ============ -->
-<section class="page cover">
+<section class="cover">
   <div class="brandline"><div class="disc"></div><span>SurLabs</span></div>
   <h1>Definiciones para el sitio de Abelleira &amp; Piedra</h1>
   <p class="lead">Antes de diseñar necesitamos cerrar un conjunto de decisiones. Casi todo lo que sigue son cosas que no podemos inventar por ustedes: son datos del estudio o son decisiones de negocio.</p>
@@ -152,10 +155,109 @@ h2.sec{font-size:20pt;margin-bottom:4px}
   </div>
 </section>
 
-<!-- QUESTIONS_PLACEHOLDER -->
+
+<section class="sheet">
+  <div class="phead"><div class="mono">Parte 1 · Lo que necesitamos saber</div><div class="n">Abelleira &amp; Piedra</div></div>
+  <h2 class="sec">Antes de diseñar</h2>
+  <p class="sec-sub">La demo que nos pasaron tiene todo el contenido en blanco: los cuatro integrantes dicen Dr. Nombre Apellido, el teléfono es +598 0000 0000 y el mail apunta a un dominio que no existe. Nada de eso lo podemos inventar, así que lo preguntamos.</p>
+
+  <div class="note" style="margin-top:0;margin-bottom:20px">
+    <b>Si solo pueden con una parte, respondan la primera.</b> El bloque 1.1 es lo que frena el proyecto si falta. El resto lo podemos ir cerrando sobre la marcha. Y hay preguntas al final, en la Parte 1.5, que se responden mucho mejor charlando veinte minutos que por escrito.
+  </div>
+
+  <div class="qgroup"><div class="qgroup-title"><span>1.1 &nbsp;Sin esto no podemos arrancar</span><em>15 preguntas</em></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Cómo se escribe el nombre del estudio, exacto y letra por letra? Nos importa si va con &amp; o con y, y si lleva la palabra Abogados o Estudio Jurídico. Queda fijado en el logo, en el título del navegador, en Google y en cualquier listado donde figuren, y tiene que ser idéntico en todos.</p><div class="opts"><b>Opciones:</b> Abelleira &amp; Piedra Abogados  /  Abelleira y Piedra Abogados  /  Estudio Jurídico Abelleira &amp; Piedra  /  Otra, se las escribimos</div><div class="hint">Si no lo definen: Usamos el nombre tal cual la demo y lo dejamos anotado como pendiente.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Quiénes integran el estudio hoy? De cada uno necesitamos nombre y apellido tal como quieren que aparezca, el tratamiento (Dr., Dra., Esc.), el rol dentro del estudio y de qué áreas se ocupa. La demo trae cuatro tarjetas que dicen literalmente Dr. Nombre Apellido, así que ni siquiera sabemos si son cuatro o son dos.</p><div class="hint">Si no lo definen: No publicamos sección de equipo. El estudio queda presentado como una unidad sin nombres propios, y se pierde la mayor palanca de confianza del sitio.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Cada persona que aparezca en la web nos confirma por escrito que está de acuerdo con que se publiquen su nombre, su cargo y su foto? Alcanza con un mail de cada uno a la casilla del estudio. Lo pedimos escrito y no de palabra porque quien se va del estudio suele pedir que lo bajen, y conviene tener claro desde el principio con qué quedó cada uno.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Hay alguien que trabaja o trabajó con ustedes cuyo nombre no tiene que aparecer en la web? Y al revés, ¿alguno de ustedes prefiere no quedar asociado públicamente a un área en particular?</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Las seis áreas de la demo (Civil, Comercial, Laboral, Inmobiliario, Sucesorio y Litigios), ¿son exactamente las que atienden hoy? ¿Sobra alguna que en la práctica derivan a un colega, o falta alguna que sí hacen, tipo Familia, Penal, Tributario, Migraciones o Marcas?</p><div class="hint">Si no lo definen: No publicamos la sección de áreas. Listar un área que no hacen trae consultas para rechazar, y omitir una que sí hacen es trabajo que se pierde.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Por dónde quieren que les entren las consultas de la web? Un botón que abre WhatsApp con el mensaje ya armado llega al celular al instante y se contesta rápido, pero deja el número a la vista de cualquiera. Un formulario que llega por mail deja registro escrito y ordenado, pero se responde más lento y se puede perder en la bandeja. También pueden ir los dos, definiendo cuál manda.</p><div class="opts"><b>Opciones:</b> Solo WhatsApp  /  Solo formulario por mail  /  Los dos, con WhatsApp como principal  /  Los dos, con el formulario como principal</div><div class="hint">Si no lo definen: No publicamos ningún canal de contacto. No asumimos por nuestra cuenta ni un número ni una casilla.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Si va WhatsApp, ¿a qué número exacto, con código de país? ¿Es una línea del estudio o el celular personal de alguno de ustedes? Lo preguntamos por dos motivos: el número queda visible para cualquiera que entre, incluido quien quiera venderles algo, y la gente suele contar cosas sensibles en el primer mensaje.</p><div class="opts"><b>Opciones:</b> Línea del estudio o chip aparte  /  Celular personal de un socio  /  Sacamos una línea nueva para esto</div><div class="hint">Si no lo definen: El botón de WhatsApp queda sin activar y el sitio sale sin ese canal.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Qué casilla de mail usan hoy para recibir consultas, y alguien la lee todos los días? La que muestra la demo, contacto@abelleirapiedra.com.uy, hoy no existe. Si quieren que llegue copia a una segunda persona para que no dependa de una sola, díganos a quién.</p><div class="hint">Si no lo definen: No publicamos ninguna dirección de mail ni dejamos el formulario activo.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Tienen línea fija o teléfono de oficina, y quieren publicarlo? La demo muestra un teléfono aparte del WhatsApp y no sabemos si existe. Si existe, ¿quién lo atiende y en qué horario?</p><div class="hint">Si no lo definen: Publicamos solo el canal que hayan confirmado y no inventamos un teléfono.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿El estudio ya tiene un dominio propio? Si lo tienen, necesitamos la dirección exacta, a nombre de quién está registrado y quién tiene hoy el usuario y la clave para administrarlo. Puede ser un socio, un familiar o el técnico que les arregla las computadoras. Si no lo tienen, lo compramos nosotros, pero necesitamos que nos lo confirmen por escrito.</p><div class="opts"><b>Opciones:</b> Ya tenemos y sabemos quién lo administra  /  Tenemos pero no sabemos quién tiene las claves  /  No tenemos, cómprenlo ustedes  /  No estamos seguros</div><div class="hint">Si no lo definen: Planificamos sobre una dirección provisoria de prueba. No registramos ni pagamos nada a nombre del estudio sin confirmación escrita.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>El correo que usan hoy, ¿corre sobre ese mismo dominio? Es importante saberlo antes de tocar cualquier configuración: publicar una web sobre un dominio que además maneja el correo puede dejar al estudio sin recibir mails si se hace mal. No tocamos nada hasta tener esto claro.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Tienen el logo en archivo original vectorial (.ai, .svg, .eps o .pdf editable), o lo único que existe es el monograma AP que aparece en la demo? Si lo diseñó alguien, ¿el estudio se quedó con los derechos para usarlo y modificarlo? Si no hay logo utilizable, el diseño de identidad es una etapa aparte que cotizamos por separado.</p><div class="opts"><b>Opciones:</b> Tenemos el vectorial y lo mandamos  /  Hay logo pero solo como imagen  /  No hay logo, cotícennos el diseño  /  No hay logo, lo resolvemos por nuestro lado</div><div class="hint">Si no lo definen: Resolvemos la marca con una solución tipográfica del nombre, sin símbolo, y la presentamos como propuesta y no como logo definitivo.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Quién de ustedes aprueba diseño y textos? Necesitamos una sola persona, con nombre y mail. Si cada entrega tiene que pasar por todos los socios el proyecto se estira, y lo decimos por experiencia y no por decir.</p><div class="hint">Si no lo definen: Tomamos como interlocutor único a la persona que nos contactó.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Si entre ustedes hay opiniones distintas sobre un diseño o sobre un texto, ¿quién tiene la última palabra? Y antes de eso: ¿están todos de acuerdo en que el estudio necesita esta web?</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Los textos los escriben ustedes o prefieren que los redactemos nosotros a partir de una entrevista, y ustedes corrigen y aprueban? Si ya tienen algo escrito, mándenlo aunque esté crudo: perfil del estudio, una propuesta comercial vieja, los CV de los socios. Nos ahorra media reunión.</p><div class="opts"><b>Opciones:</b> Los escribimos nosotros  /  Redáctenlos ustedes y corregimos  /  Mitad y mitad, les pasamos material de base</div><div class="hint">Si no lo definen: Redactamos nosotros a partir de una entrevista, y nada se publica sin aprobación escrita del estudio.</div></div></div>
+</div>
+</section>
+
+<section class="sheet">
+  <div class="phead"><div class="mono">Parte 1 · Lo que necesitamos saber</div><div class="n">Abelleira &amp; Piedra</div></div>
+  <div class="qgroup"><div class="qgroup-title"><span>1.2 &nbsp;Marca, contenido y fotos</span><em>17 preguntas</em></div>
+<div class="q"><div class="box"></div><div class="body"><p>El azul marino y el dorado de la demo, ¿son colores que el estudio ya usa en tarjetas, membretes o cartelería, o simplemente vinieron con la plantilla? Lo preguntamos porque marino con dorado es lo que usa casi todo el mercado jurídico, y si no es una obligación hay margen real para diferenciarlos. En la Parte 2 les mostramos cuatro caminos.</p><div class="opts"><b>Opciones:</b> Son los colores del estudio, no se tocan  /  Vinieron con la plantilla, estamos abiertos  /  Nos gustan pero queremos ver variantes  /  Sin preferencia, decidan ustedes</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Hay material impreso que la web tenga que respetar? Tarjetas personales, membrete, carátulas de escritos, firma de mail, alguna tipografía que usen en documentos, un manual de marca. Si existe, mándennos fotos o los archivos.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Existe una forma corta de la marca que ya usen entre ustedes o con clientes, tipo A&amp;P? La necesitamos para el ícono de la pestaña del navegador y para el logo en pantalla de celular, donde el nombre completo no entra.</p><div class="hint">Si no lo definen: Usamos solo el nombre completo y el monograma AP únicamente como ícono.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>La demo dice más de 10 años brindando asesoramiento legal. ¿Desde qué año funciona el estudio con este nombre, y desde qué año ejerce cada uno de ustedes? Si el estudio es más nuevo que la trayectoria individual, cuéntennos cómo lo quieren contar. No publicamos ninguna cifra que no puedan respaldar si se la piden.</p><div class="hint">Si no lo definen: Sacamos toda referencia a años de trayectoria, cantidad de casos o de clientes.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>De cada integrante, ¿qué credenciales quieren mostrar? Universidad y año de egreso, posgrados o especializaciones, número de matrícula, membresías, docencia o publicaciones, idiomas en los que atienden, y una reseña de tres o cuatro líneas. Si les resulta más cómodo, les mandamos un formulario y lo completa cada uno por su cuenta.</p><div class="hint">Si no lo definen: Publicamos solo nombre, tratamiento, rol y áreas, sin reseñas ni formación.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Tienen retratos profesionales actuales de los socios y del equipo, hechos por un fotógrafo? Si tienen, mándennos uno de muestra para ver calidad, fondo y encuadre.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Están dispuestos a hacer una sesión de fotos, de las personas y de la oficina? Se los decimos derecho: en un estudio jurídico es lo que más cambia la percepción del visitante, y es justamente lo que hace que la demo actual se lea como plantilla. La producción se cotiza aparte. Si la respuesta es no, diseñamos la sección resuelta con tipografía y no con caras: no usamos bancos de imágenes, porque se nota y resta credibilidad.</p><div class="opts"><b>Opciones:</b> Sí, coordinemos la sesión  /  Sí, pero después del lanzamiento  /  No, preferimos que no haya fotos</div><div class="hint">Si no lo definen: Diseñamos sin fotografía de personas ni de oficina, apoyándonos en tipografía, color y textura.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿La oficina se puede fotografiar? Nos importa si es propia o compartida con otros estudios, y si hay expedientes, pantallas o carteles de terceros que no puedan salir en una foto.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>El claim de la demo es Soluciones jurídicas con experiencia y compromiso. Es una frase que le queda igual a cualquier estudio del país. ¿La mantenemos, o nos dejan proponer una frase que diga algo que solo puedan decir ustedes?</p><div class="opts"><b>Opciones:</b> Mantener el claim actual  /  Que propongamos y ustedes revisan  /  Tienen una frase propia y nos la pasan</div><div class="hint">Si no lo definen: Proponemos un claim nuevo, sobrio y específico, y no publicamos nada sin que lo aprueben.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Por qué un cliente los elige a ustedes y no al estudio de la esquina? Buscamos una razón concreta, no valores generales. Confidencialidad, experiencia y compromiso los pone todo el mundo, así que no diferencian nada.</p><div class="hint">Si no lo definen: Construimos el argumento sobre la forma de trabajar y no sobre atributos declarados.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Cuando un cliente nuevo los llama, ¿con qué palabras describe su problema? Nos sirven frases literales, del estilo me quieren echar del trabajo, tengo que hacer la sucesión de mi papá, quiero sacar a un inquilino que no paga. La gente no busca en Google como escribe un abogado, y esa diferencia es la que decide si los encuentran.</p><div class="hint">Si no lo definen: Redactamos con terminología jurídica estándar y se los mandamos para que lo corrijan.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Cómo quieren que la web le hable al visitante, de vos o de usted? Nuestro default para Uruguay es el vos, que suena más cercano, pero en un estudio jurídico el usted puede leerse más apropiado. Es una decisión de ustedes y la aplicamos parejo en todo el sitio.</p><div class="opts"><b>Opciones:</b> De vos  /  De usted  /  Decidan ustedes</div><div class="hint">Si no lo definen: Escribimos de usted, que es lo más conservador para el rubro.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Qué días y en qué horario atienden? ¿Se puede ir sin aviso o siempre es con cita previa?</p><div class="hint">Si no lo definen: No publicamos horarios.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Cuál es la dirección de la oficina, con calle, número, piso y apartamento, y quieren que se publique completa? La dirección visible es lo que habilita a Google a mostrarlos en el mapa. Sin ella el alcance local queda bastante más limitado.</p><div class="opts"><b>Opciones:</b> Publicar dirección completa con piso  /  Mostrar solo calle y barrio  /  No publicar dirección, atendemos con cita previa</div><div class="hint">Si no lo definen: Dejamos Montevideo, Uruguay, sin mapa ni dirección, y lo anotamos como limitación conocida.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿La oficina es accesible para alguien en silla de ruedas o con movilidad reducida? Ascensor, escalones en la entrada, ancho de puertas. Si lo es, conviene decirlo en la web: es información que quien la necesita busca y casi ningún estudio publica.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿El estudio tiene LinkedIn, Instagram o Facebook activos, o los socios publican a título personal? Pásennos los links exactos de los que quieran que enlacemos. Si alguno está abandonado, conviene no enlazarlo: un ícono que lleva a un perfil vacío resta más de lo que suma.</p><div class="hint">Si no lo definen: No incluimos íconos ni enlaces a redes sociales.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Mándennos dos o tres webs de estudios jurídicos que les gusten, de acá o de afuera, y una que no les guste, con una línea de por qué en cada caso. Es la forma más rápida de no presentarles una propuesta que no tiene nada que ver con lo que tienen en la cabeza.</p><div class="hint">Si no lo definen: Definimos la dirección visual nosotros y la presentamos en dos opciones contrastantes.</div></div></div>
+</div>
+</section>
+
+<section class="sheet">
+  <div class="phead"><div class="mono">Parte 1 · Lo que necesitamos saber</div><div class="n">Abelleira &amp; Piedra</div></div>
+  <div class="qgroup"><div class="qgroup-title"><span>1.3 &nbsp;Dominio, correo y operación</span><em>16 preguntas</em></div>
+<div class="q"><div class="box"></div><div class="body"><p>Si hay que comprar el dominio, ¿qué terminación prefieren y a nombre de quién queda? El .com.uy es el estándar local, pide documentación del titular y no se activa el mismo día. El .uy es más corto y más caro. El .com es internacional y se activa al instante. Se renueva todos los años mientras la web exista, así que necesitamos a qué persona y a qué casilla tienen que llegar los avisos de vencimiento. Les mandamos los costos por separado.</p><div class="opts"><b>Opciones:</b> .com.uy a nombre del estudio  /  .uy  /  .com internacional  /  Queremos ver costos antes de decidir</div><div class="hint">Si no lo definen: Recomendamos .com.uy a nombre del estudio, pero no iniciamos ningún trámite sin autorización escrita.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Quieren casillas de correo con el nombre del estudio, tipo nombre@sudominio? Es un servicio que se paga por casilla y por mes, todos los meses, así que hay que definir quién lo contrata y quién da de alta y de baja cuando entra o sale alguien. Los precios van en la cotización aparte.</p><div class="opts"><b>Opciones:</b> Una sola casilla general  /  Una general más una por abogado  /  Seguimos con el mail que usamos hoy  /  Cotícennos las opciones</div><div class="hint">Si no lo definen: Asumimos una sola casilla general y no contratamos ningún servicio pago sin aprobación previa.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Las cuentas donde vive el sitio pueden quedar a nombre del estudio, con nosotros como usuarios de trabajo, o quedar administradas por nosotros. ¿Cuál prefieren? En cualquiera de los dos casos el código y el contenido son del estudio, y si algún día trabajan con otro proveedor se los entregamos completo.</p><div class="opts"><b>Opciones:</b> Todo a nombre del estudio  /  Dominio del estudio, hosting administrado por SurLabs  /  Que administre todo SurLabs</div><div class="hint">Si no lo definen: Hosting administrado por SurLabs y dominio a nombre del estudio, documentado por escrito.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Tienen hoy alguien que les maneje la parte técnica del estudio? Un empleado, un técnico externo, la empresa que les instaló las computadoras y los mails. Si existe, pásennos el contacto: casi siempre esa persona tiene las claves del dominio y del correo, y hablar directo con ella ahorra semanas de ida y vuelta.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Quién les armó la demo que nos pasaron? Lo preguntamos por dos motivos. Si hay alguien esperando seguir en el proyecto, mejor saberlo ahora. Y si esa persona ya registró un dominio o abrió cuentas a nombre del estudio, necesitamos saberlo antes de abrir las nuestras.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Hay hoy algo publicado a nombre del estudio? Una web vieja, una página de Facebook o Instagram, una ficha en Google. Y sobre todo, ¿hay direcciones, mails o teléfonos ya impresos en tarjetas, carteles o firmas de mail que tengan que seguir funcionando igual?</p><div class="hint">Si no lo definen: Asumimos que la web nueva es la primera presencia online y no configuramos redirecciones.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿El estudio tiene Ficha de Empresa de Google, que es la tarjeta que aparece a la derecha en el mapa cuando buscás un negocio por su nombre? Si existe, ¿está verificada y quién la administra? Para un estudio local pesa más que la web para aparecer en búsquedas.</p><div class="opts"><b>Opciones:</b> Sí, la tenemos y está verificada  /  Existe pero no sabemos quién la maneja  /  No tenemos  /  No sabemos qué es</div><div class="hint">Si no lo definen: Asumimos que no existe, no prometemos aparición en el mapa, y la dejamos como tarea posterior.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Una vez lanzada, ¿qué tan seguido calculan que van a querer cambiar algo, tipo sumar un abogado, corregir un teléfono o agregar un área? ¿Y prefieren entrar a un panel y editarlo ustedes, o pedírnoslo a nosotros? Les avisamos que el panel encarece el desarrollo, suma un costo mensual y en la mayoría de los estudios termina sin usarse. Van los dos precios en la cotización para que comparen.</p><div class="opts"><b>Opciones:</b> Casi nunca, se lo pedimos a ustedes  /  Cada tanto, se lo pedimos a ustedes  /  Seguido, queremos editarlo nosotros</div><div class="hint">Si no lo definen: Arrancamos con cambios a pedido, sin panel, y dejamos la puerta abierta a sumarlo después.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Queremos dejar medición de visitas instalada desde el día uno. Nuestra recomendación es una analítica sin cookies: no identifica personas y evita el cartel de consentimiento, que es lo primero que ve un visitante y lo que más molesta. Google Analytics da más detalle pero obliga al banner y a declararlo en la política de privacidad. ¿Vamos con la recomendación o prefieren Google?</p><div class="opts"><b>Opciones:</b> Vamos con la recomendación  /  Preferimos Google Analytics  /  Sin medición</div><div class="hint">Si no lo definen: Analítica sin cookies, sin banner, declarada en la política de privacidad.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Quieren que la gente pueda adjuntar documentos desde la web, tipo una carta de despido o una escritura? Se puede hacer, pero implica que el sitio reciba y guarde documentación sensible de alguien que todavía no es cliente del estudio. Nuestra recomendación es no incluirlo en la primera versión.</p><div class="opts"><b>Opciones:</b> Sin adjuntos, como recomiendan  /  Sí, queremos adjuntos  /  Charlémoslo</div><div class="hint">Si no lo definen: Sin adjuntos.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Quieren que se pueda agendar una consulta directo desde la web, eligiendo día y hora contra la agenda de ustedes, o prefieren que primero escriban y ustedes coordinen? Agendar solo levanta bastante la conversión, pero solo funciona si la agenda del estudio está de verdad al día.</p><div class="opts"><b>Opciones:</b> Que primero escriban y coordinamos nosotros  /  Queremos agenda online  /  Queremos verlo pero no en la primera versión</div><div class="hint">Si no lo definen: Sin agenda online. El visitante escribe y el estudio coordina.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>En feria judicial de enero y en Semana de Turismo, ¿el estudio sigue tomando consultas nuevas? Si no, la web tiene que decirlo: una promesa de respuesta que se rompe dos semanas por año hace más daño que no prometer nada.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿En cuánto tiempo se comprometen a responder una consulta que entra por la web, y quién la lee? ¿Alguien mira ese canal los fines de semana?</p><div class="opts"><b>Opciones:</b> Mismo día hábil  /  Dentro de las 24 horas hábiles  /  Dentro de las 48 horas hábiles  /  Preferimos no comprometer un plazo</div><div class="hint">Si no lo definen: No publicamos ninguna promesa de tiempo de respuesta.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Tienen una fecha objetivo para tener la web publicada? ¿Hay algo atado a esa fecha, tipo tarjetas para imprimir, una charla, una presentación o el arranque del año judicial?</p><div class="hint">Si no lo definen: Trabajamos sin fecha comprometida y les proponemos un cronograma al cerrar el alcance.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Cuando les mandamos algo para revisar, ¿en cuántos días hábiles nos lo devuelven? ¿Y hay semanas donde por audiencias, plazos o feria directamente no van a poder mirarlo? Preferimos saberlo ahora y armar el cronograma en función de eso.</p></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>En los próximos seis meses, ¿entra o sale alguien del estudio? ¿Hay alguna chance de que cambie el nombre? Lo preguntamos antes de comprar un dominio y de diseñar un logo, porque las dos cosas son caras de rehacer.</p></div></div>
+</div>
+</section>
+
+<section class="sheet">
+  <div class="phead"><div class="mono">Parte 1 · Lo que necesitamos saber</div><div class="n">Abelleira &amp; Piedra</div></div>
+  <div class="qgroup"><div class="qgroup-title"><span>1.4 &nbsp;Legales, datos personales y límites del texto</span><em>8 preguntas</em></div>
+<div class="q"><div class="box"></div><div class="body"><p>La política de privacidad, los términos de uso y el aviso de cookies van firmados por el estudio, así que la redacción tiene que ser de ustedes o de alguien que ustedes elijan. Nosotros los maquetamos y los publicamos. ¿Les sirve así, y para qué fecha los tendrían? Si prefieren que consigamos un borrador de base para trabajar sobre eso, lo cotizamos aparte.</p><div class="opts"><b>Opciones:</b> Los redactamos nosotros  /  Consigan un borrador y lo corregimos  /  Se lanza sin esas páginas y se agregan después</div><div class="hint">Si no lo definen: No redactamos textos legales por ustedes. El sitio saldría sin esas páginas y sin formulario.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>En el formulario y en el mensaje de WhatsApp queremos incluir dos textos cortos: uno que aclare que la consulta inicial no constituye asesoramiento ni crea relación abogado cliente hasta que se acuerde por escrito, y una casilla de consentimiento sin premarcar para el tratamiento de datos. ¿Nos pasan ustedes la redacción exacta de los dos?</p><div class="hint">Si no lo definen: Dejamos una versión mínima marcada como pendiente y no publicamos el formulario hasta que la aprueben.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Sobre las consultas que lleguen por la web, necesitamos tres datos para el aviso de privacidad: cuánto tiempo las conservan si no derivan en cliente, quién del estudio puede verlas, y a qué dirección escribe alguien que quiera acceder a sus datos o pedir que los borren. Esa dirección tiene que figurar en el sitio.</p><div class="hint">Si no lo definen: Publicamos la casilla general como canal, dejamos el plazo sin especificar y lo anotamos como pendiente.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Tienen alguna base de datos inscripta ante la URCDP, o la de consultas de la web habría que inscribirla? Nos guiamos por lo que nos digan: ustedes conocen el marco mejor que nosotros.</p><div class="hint">Si no lo definen: Les avisamos por escrito que la inscripción queda pendiente de su lado.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Hasta dónde podemos llegar con el texto? Ustedes nos marcan el límite y nosotros lo respetamos al pie: superlativos del tipo el mejor estudio, comparaciones con otros estudios, promesas de resultado. Nuestro default es tono sobrio y descriptivo, sin nada de eso.</p><div class="opts"><b>Opciones:</b> Tono sobrio y descriptivo  /  Algo más afirmativo, con frases que aprobamos nosotros  /  Lo revisamos juntos frase por frase</div><div class="hint">Si no lo definen: Claim sobrio y descriptivo, sin superlativos, sin comparaciones y sin promesas de resultado.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Podemos publicar testimonios o reseñas de clientes, aunque sean anónimos o con iniciales? ¿Y están dispuestos a pedirle reseñas de Google a clientes conformes? Si el marco no lo permite, lo damos por cerrado y no volvemos sobre el tema.</p><div class="opts"><b>Opciones:</b> Sí, con nombre y autorización escrita  /  Sí, pero anónimos o con iniciales  /  Solo enlazar reseñas de Google  /  No, ninguno</div><div class="hint">Si no lo definen: Salimos sin testimonios ni reseñas. La confianza se construye con el equipo real y el proceso de trabajo.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>¿Podemos mencionar casos, sentencias, montos, tasas de éxito o nombres de empresas y organismos a los que asesoran? Preferimos que el límite lo marquen ustedes y no nosotros.</p><div class="hint">Si no lo definen: No mencionamos ningún caso, resultado, monto ni nombre de cliente en ninguna parte de la web.</div></div></div>
+<div class="q"><div class="box"></div><div class="body"><p>Para el pie de página: ¿cuál es la razón social del estudio y el RUT? ¿Es una sociedad o cada profesional factura por su cuenta? Díganos también si quieren que el RUT figure a la vista.</p><div class="hint">Si no lo definen: El pie lleva solo el nombre del estudio y el año.</div></div></div>
+</div>
+
+  <div class="qgroup" style="margin-top:22px">
+    <div class="qgroup-title"><span>1.5 &nbsp;Para charlar, no para escribir</span><em>13 preguntas</em></div>
+    <p style="font-size:9pt;color:#6b665e;margin-bottom:10px;max-width:62ch">Estas son de estrategia y se responden mejor en una llamada de cuarenta minutos. Van acá para que sepan de qué vamos a hablar, no para que las contesten por escrito.</p>
+    <div class="q"><div class="box"></div><div class="body"><p>¿Para qué quieren la web, en concreto? ¿Para que empiecen a entrar consultas de gente que hoy no los conoce, o para que sea el respaldo serio que mira alguien que ya les llegó por recomendación y quiere confirmar que son un estudio de verdad? Son dos webs distintas.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿A quién le facturan hoy la mayor parte, a empresas o a personas físicas? ¿Y eso es lo que quieren para adelante, o lo quieren cambiar?</p></div></div><div class="q"><div class="box"></div><div class="body"><p>De las áreas que atienden, ¿cuáles dos o tres quieren que la web les traiga de verdad, y cuál les gustaría hacer menos? Si nos priorizan armamos una página propia por área, que es lo que permite competir por búsquedas del tipo abogado laboral Montevideo. Si van todas parejas queda una sola página y compite peor.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>En Laboral, ¿asesoran a la empresa o al trabajador? ¿Y en Litigios, suelen estar del lado de quien demanda o de quien se defiende? El texto de esas dos áreas es directamente opuesto según el lado, y escribir para los dos a la vez espanta a ambos.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Qué tipo de consulta preferirían no recibir? Hay búsquedas con mucho volumen que traen consultas que después no les sirven, y filtrar con el texto es gratis.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿La primera consulta la cobran o es sin cargo? ¿Y quieren que eso figure en la web o prefieren hablarlo por teléfono? Cambia por completo el texto del botón principal.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Cómo cobran normalmente: por hora, iguala mensual, porcentaje sobre resultado, precio cerrado por trámite? ¿Algo de eso puede figurar en la web?</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Atienden solo Montevideo, todo el país, o también a extranjeros y uruguayos en el exterior con temas acá? ¿Trabajan por videollamada? Si el exterior pesa, ¿hace falta una versión en inglés?</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Cuántas consultas nuevas más podrían atender por mes sin que se les caiga la calidad? Un orden de magnitud alcanza. Si la capacidad es chica, conviene una web que filtre antes que una que capte.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Qué dos o tres estudios consideran competencia directa, o cuáles ven que aparecen primero cuando buscan lo que ustedes ofrecen?</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Con qué presupuesto se están manejando para este proyecto y cómo prefieren pagarlo? Preguntamos temprano para proponerles un alcance que entre, en vez de una propuesta que no van a poder tomar.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>¿Cuántas rondas de correcciones esperan? Nuestra propuesta es dos sobre el diseño y dos sobre los textos, y que lo que venga después se presupueste aparte. Es para que ninguno de los dos lados se sorprenda.</p></div></div><div class="q"><div class="box"></div><div class="body"><p>Si dentro de seis meses tuvieran que decir si la web valió la pena, ¿qué tendría que haber pasado?</p></div></div>
+  </div>
+
+  <div class="note">
+    <b>Lo que se cotiza aparte.</b> Varias de estas preguntas abren trabajo que no está dentro del sitio: el diseño del logo si no hay vectorial, la sesión de fotos, las casillas de correo, el panel de edición y el mantenimiento mensual. Ninguno se hace sin que ustedes lo aprueben con el precio delante. Les mandamos la cotización por separado.
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>Parte 1 de 3</div></div>
+</section>
+
 
 <!-- ============ DIRECCIONES VISUALES ============ -->
-<section class="page">
+<section class="sheet">
   <div class="phead"><div class="mono">Parte 2 · Dirección visual</div><div class="n">Abelleira &amp; Piedra</div></div>
 
   <h2 class="sec">Cuatro caminos posibles</h2>
@@ -263,11 +365,10 @@ h2.sec{font-size:20pt;margin-bottom:4px}
     <b>Lo que necesitamos que decidan.</b> No hace falta que elijan una paleta. Alcanza con que nos digan dos cosas: si el sitio debe verse oscuro e imponente o claro y accesible, y si prefieren jugar seguro con lo que usa el rubro o diferenciarse. Con esas dos respuestas la paleta la resolvemos nosotros.
   </div>
 
-  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>Parte 2 de 3</div></div>
 </section>
 
 <!-- ============ PROXIMOS PASOS ============ -->
-<section class="page">
+<section class="sheet">
   <div class="phead"><div class="mono">Parte 3 · Cómo seguimos</div><div class="n">Abelleira &amp; Piedra</div></div>
 
   <h2 class="sec">Los próximos pasos</h2>
