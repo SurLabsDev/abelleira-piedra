@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Abelleira &amp; Piedra Abogados | Definiciones del sitio web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Instrument+Sans:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+
+:root{
+  --ink:#0d0c0b;
+  --ink-soft:#3d3a35;
+  --bone:#faf8f5;
+  --rule:#ddd7cd;
+  --dim:#6b665e;
+  --ember:#c9440d;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  font-family:"Inter Tight",-apple-system,Helvetica,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  font-size:10.2pt;
+  line-height:1.55;
+}
+
+.page{
+  width:210mm; min-height:297mm;
+  padding:20mm 18mm 16mm;
+  page-break-after:always;
+  position:relative;
+  display:flex; flex-direction:column;
+}
+.page:last-child{page-break-after:auto}
+
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+
+.mono{font-family:"JetBrains Mono",monospace;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase}
+
+/* ---------- portada ---------- */
+.cover{justify-content:space-between;background:var(--ink);color:var(--bone)}
+.cover .mono{color:var(--ember)}
+.cover h1{font-size:31pt;line-height:1.04;margin-top:auto;max-width:15ch}
+.cover .lead{color:#b6afa4;max-width:52ch;margin-top:14px;font-size:11pt}
+.cover-rule{height:1px;background:rgba(250,248,245,.18);margin:26px 0 18px}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:9pt;color:#b6afa4}
+.cover-meta strong{display:block;color:var(--bone);font-weight:500;margin-bottom:2px}
+.brandline{display:flex;align-items:center;gap:9px}
+.brandline .disc{width:19px;height:19px;border-radius:50%;background:var(--ember)}
+.brandline span{font-family:"Bricolage Grotesque",serif;font-size:13pt;font-weight:600;letter-spacing:-.01em}
+
+/* ---------- encabezados de pagina ---------- */
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:7px;margin-bottom:22px}
+.phead .mono{color:var(--dim)}
+.phead .n{font-family:"JetBrains Mono",monospace;font-size:7.6pt;color:var(--dim)}
+
+.intro{font-size:10.4pt;color:var(--ink-soft);max-width:62ch;margin-bottom:20px}
+
+h2.sec{font-size:20pt;margin-bottom:4px}
+.sec-sub{color:var(--dim);font-size:9.4pt;margin-bottom:16px;max-width:58ch}
+
+/* ---------- preguntas ---------- */
+.qgroup{margin-bottom:17px;break-inside:avoid}
+.qgroup-title{
+  font-family:"JetBrains Mono",monospace;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ember);border-bottom:1px solid var(--rule);padding-bottom:5px;margin-bottom:9px;
+  display:flex;justify-content:space-between;
+}
+.qgroup-title em{font-style:normal;color:var(--dim)}
+.q{display:flex;gap:9px;margin-bottom:9px;break-inside:avoid;align-items:flex-start}
+.q .box{
+  flex:0 0 auto;width:9px;height:9px;border:1px solid #b8b1a6;border-radius:2px;margin-top:4px;
+}
+.q .body{flex:1}
+.q p{margin:0}
+.q .hint{color:var(--dim);font-size:8.6pt;line-height:1.4;margin-top:1px}
+.q .opts{color:var(--ink-soft);font-size:8.8pt;margin-top:2px}
+.q .opts b{font-weight:500}
+.crit{color:var(--ember);font-weight:600}
+
+.answerlines{margin:6px 0 0}
+.answerlines div{border-bottom:1px solid var(--rule);height:15px}
+
+/* ---------- mapa 2x2 ---------- */
+.map{
+  border:1px solid var(--rule);border-radius:6px;padding:16px;margin:6px 0 20px;
+  display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;
+  gap:16px 12px;align-items:center;font-size:8.8pt;
+}
+.map .axis-x{text-align:center;color:var(--dim);font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;padding-bottom:2px}
+.map .axis-y{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--dim);text-align:center;font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;height:100%}
+.map .cell{border:1px solid var(--rule);border-radius:4px;padding:9px 11px;min-height:52px}
+.map .cell b{display:block;font-family:"Bricolage Grotesque",serif;font-size:11pt;font-weight:600;margin-bottom:2px}
+.map .cell span{color:var(--dim);font-size:8.4pt;line-height:1.35;display:block}
+
+/* ---------- mockups de paleta ---------- */
+.dirs{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.dir{break-inside:avoid}
+.mock{border-radius:6px;overflow:hidden;height:132px;display:flex;flex-direction:column;position:relative}
+.mock .bar{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;font-size:5.6pt;letter-spacing:.08em;text-transform:uppercase}
+.mock .bar .lg{display:flex;align-items:center;gap:5px;font-weight:600;letter-spacing:.04em}
+.mock .bar .lg i{font-style:normal;font-size:9pt;line-height:1;letter-spacing:-.06em}
+.mock .bar nav{display:flex;gap:8px;opacity:.75}
+.mock .bar .cta{padding:3px 7px;border-radius:3px;font-weight:600;letter-spacing:.06em}
+.mock .body{flex:1;padding:11px 10px 10px;display:flex;flex-direction:column;justify-content:flex-end}
+.mock h5{font-size:13pt;line-height:1.06;font-weight:600;letter-spacing:-.02em}
+.mock .sub{font-size:5.8pt;line-height:1.4;margin-top:5px;max-width:34ch}
+.mock .btns{display:flex;gap:5px;margin-top:8px}
+.mock .btns span{font-size:5.4pt;letter-spacing:.07em;text-transform:uppercase;padding:4px 8px;border-radius:3px;font-weight:600}
+
+.dir-meta{margin-top:8px}
+.dir-meta h4{font-size:11.5pt;display:flex;align-items:baseline;gap:6px}
+.dir-meta h4 em{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:7pt;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.dir-meta p{font-size:8.6pt;color:var(--ink-soft);line-height:1.42;margin-top:3px}
+.dir-meta .warn{color:var(--ember)}
+.swatches{display:flex;gap:4px;margin-top:6px;align-items:center}
+.swatches i{width:15px;height:15px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,.09)}
+.swatches code{font-family:"JetBrains Mono",monospace;font-size:6.6pt;color:var(--dim);margin-left:3px}
+
+.note{border-left:2px solid var(--ember);padding:9px 0 9px 12px;margin-top:16px;font-size:9pt;color:var(--ink-soft);max-width:62ch}
+.note b{font-weight:600;color:var(--ink)}
+
+/* ---------- pasos ---------- */
+.steps{display:grid;gap:0;margin-top:6px}
+.step{display:grid;grid-template-columns:20px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.step:last-child{border-bottom:0}
+.step .k{font-family:"JetBrains Mono",monospace;font-size:8pt;color:var(--ember);padding-top:2px}
+.step h4{font-size:11.5pt;margin-bottom:2px}
+.step p{font-size:9pt;color:var(--ink-soft);max-width:58ch}
+
+.foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--dim)}
+.foot b{font-weight:600;color:var(--ink);display:block;font-size:9pt}
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<section class="page cover">
+  <div class="brandline"><div class="disc"></div><span>SurLabs</span></div>
+  <h1>Definiciones para el sitio de Abelleira &amp; Piedra</h1>
+  <p class="lead">Antes de diseñar necesitamos cerrar un conjunto de decisiones. Casi todo lo que sigue son cosas que no podemos inventar por ustedes: son datos del estudio o son decisiones de negocio.</p>
+  <div class="cover-rule"></div>
+  <div class="cover-meta">
+    <div><strong>Para</strong>Abelleira &amp; Piedra Abogados</div>
+    <div><strong>De</strong>SurLabs, Montevideo</div>
+    <div><strong>Fecha</strong>7 de agosto de 2026</div>
+    <div><strong>Cómo responderlo</strong>Directo sobre este documento, por escrito o en una llamada de 40 minutos</div>
+  </div>
+</section>
+
+<!-- QUESTIONS_PLACEHOLDER -->
+
+<!-- ============ DIRECCIONES VISUALES ============ -->
+<section class="page">
+  <div class="phead"><div class="mono">Parte 2 · Dirección visual</div><div class="n">Abelleira &amp; Piedra</div></div>
+
+  <h2 class="sec">Cuatro caminos posibles</h2>
+  <p class="sec-sub">La demo que nos pasaron usa azul marino con dorado. Es la paleta que usa casi todo el rubro, y por eso mismo conviene mirarla al lado de otras opciones antes de decidir. La elección no es de gusto: define a quién impresiona el sitio y a quién intimida.</p>
+
+  <div class="map">
+    <div></div>
+    <div class="axis-x">Convencional para el rubro</div>
+    <div class="axis-x">Diferenciado</div>
+
+    <div class="axis-y">Oscuro, imponente</div>
+    <div class="cell"><b>A. Institucional</b><span>Lo esperable. Transmite solidez sin esfuerzo, pero es indistinguible de otros estudios.</span></div>
+    <div class="cell"><b>B. Tribunal</b><span>La misma gravedad, con una paleta que casi nadie usa en el rubro.</span></div>
+
+    <div class="axis-y">Claro, cercano</div>
+    <div class="cell"><b>D. Estudio abierto</b><span>Profesional y accesible. Baja la barrera para quien consulta por primera vez.</span></div>
+    <div class="cell"><b>C. Expediente</b><span>Editorial y contemporáneo. Se lee como una publicación seria, no como un folleto.</span></div>
+  </div>
+
+  <div class="dirs">
+
+    <!-- A -->
+    <div class="dir">
+      <div class="mock" style="background:#0B1B2E;color:#E8E4DC;font-family:'Inter Tight',sans-serif">
+        <div class="bar" style="border-bottom:1px solid rgba(195,162,101,.25)">
+          <div class="lg" style="color:#C3A265;font-family:Lora,serif"><i>AP</i>Abelleira &amp; Piedra</div>
+          <div style="display:flex;align-items:center;gap:8px"><nav><span>Estudio</span><span>Áreas</span><span>Equipo</span></nav><div class="cta" style="background:#C3A265;color:#0B1B2E">Consultar</div></div>
+        </div>
+        <div class="body">
+          <h5 style="font-family:Lora,serif;color:#E8E4DC">Asesoramiento jurídico<br>con criterio propio</h5>
+          <div class="sub" style="color:#93A2B2">Acompañamos a personas y empresas en las decisiones que no admiten improvisación.</div>
+          <div class="btns"><span style="background:#C3A265;color:#0B1B2E">Hablemos</span><span style="border:1px solid rgba(195,162,101,.5);color:#C3A265">Áreas</span></div>
+        </div>
+      </div>
+      <div class="dir-meta">
+        <h4>A. Institucional <em>Lora + Inter Tight</em></h4>
+        <p>Azul marino y dorado. Es lo que espera cualquiera que busque un abogado, y por eso funciona el primer segundo. <span class="warn">El costo es que se parece a todos los estudios del país.</span></p>
+        <div class="swatches"><i style="background:#0B1B2E"></i><i style="background:#132A42"></i><i style="background:#C3A265"></i><i style="background:#E8E4DC"></i><code>#0B1B2E · #C3A265</code></div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="dir">
+      <div class="mock" style="background:#0E2A21;color:#F1EEE4;font-family:'Instrument Sans',sans-serif">
+        <div class="bar" style="border-bottom:1px solid rgba(241,238,228,.16)">
+          <div class="lg" style="color:#F1EEE4"><i>AP</i>Abelleira &amp; Piedra</div>
+          <div style="display:flex;align-items:center;gap:8px"><nav><span>Estudio</span><span>Áreas</span><span>Equipo</span></nav><div class="cta" style="background:#F1EEE4;color:#0E2A21">Consultar</div></div>
+        </div>
+        <div class="body">
+          <h5 style="color:#F1EEE4">Asesoramiento jurídico<br>con criterio propio</h5>
+          <div class="sub" style="color:#9BAFA3">Acompañamos a personas y empresas en las decisiones que no admiten improvisación.</div>
+          <div class="btns"><span style="background:#F1EEE4;color:#0E2A21">Hablemos</span><span style="border:1px solid rgba(241,238,228,.4);color:#F1EEE4">Áreas</span></div>
+        </div>
+      </div>
+      <div class="dir-meta">
+        <h4>B. Tribunal <em>Instrument Sans</em></h4>
+        <p>Verde profundo y hueso, sin dorado. La seriedad la carga el color de fondo y el espacio, no un metal. Se distingue de inmediato y no pierde nada de formalidad.</p>
+        <div class="swatches"><i style="background:#0E2A21"></i><i style="background:#153629"></i><i style="background:#9BAFA3"></i><i style="background:#F1EEE4"></i><code>#0E2A21 · #F1EEE4</code></div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="dir">
+      <div class="mock" style="background:#F4F2ED;color:#191A1D;font-family:'Inter Tight',sans-serif;border:1px solid #e2ded5">
+        <div class="bar" style="border-bottom:1px solid #ddd8cd">
+          <div class="lg" style="color:#191A1D;font-family:Newsreader,serif"><i>AP</i>Abelleira &amp; Piedra</div>
+          <div style="display:flex;align-items:center;gap:8px"><nav style="color:#5D6169"><span>Estudio</span><span>Áreas</span><span>Equipo</span></nav><div class="cta" style="background:#8A2233;color:#fff">Consultar</div></div>
+        </div>
+        <div class="body">
+          <h5 style="font-family:Newsreader,serif;color:#191A1D">Asesoramiento jurídico<br>con criterio propio</h5>
+          <div class="sub" style="color:#5D6169">Acompañamos a personas y empresas en las decisiones que no admiten improvisación.</div>
+          <div class="btns"><span style="background:#8A2233;color:#fff">Hablemos</span><span style="border:1px solid #c8c2b6;color:#191A1D">Áreas</span></div>
+        </div>
+      </div>
+      <div class="dir-meta">
+        <h4>C. Expediente <em>Newsreader + Inter Tight</em></h4>
+        <p>Papel cálido, grafito y un borgoña profundo. Se lee como una publicación, no como un folleto. Es el camino más contemporáneo de los cuatro sin dejar de ser sobrio.</p>
+        <div class="swatches"><i style="background:#F4F2ED"></i><i style="background:#8A2233"></i><i style="background:#5D6169"></i><i style="background:#191A1D"></i><code>#F4F2ED · #8A2233</code></div>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="dir">
+      <div class="mock" style="background:#FBFAF8;color:#14161A;font-family:Geist,sans-serif;border:1px solid #e6e3de">
+        <div class="bar" style="border-bottom:1px solid #e6e3de">
+          <div class="lg" style="color:#1B4965"><i>AP</i>Abelleira &amp; Piedra</div>
+          <div style="display:flex;align-items:center;gap:8px"><nav style="color:#5A6068"><span>Estudio</span><span>Áreas</span><span>Equipo</span></nav><div class="cta" style="background:#1B4965;color:#fff">Consultar</div></div>
+        </div>
+        <div class="body">
+          <h5 style="color:#14161A">Asesoramiento jurídico<br>con criterio propio</h5>
+          <div class="sub" style="color:#5A6068">Acompañamos a personas y empresas en las decisiones que no admiten improvisación.</div>
+          <div class="btns"><span style="background:#1B4965;color:#fff">Hablemos</span><span style="border:1px solid #cfcbc4;color:#14161A">Áreas</span></div>
+        </div>
+      </div>
+      <div class="dir-meta">
+        <h4>D. Estudio abierto <em>Geist</em></h4>
+        <p>Casi blanco, tinta y un azul acero. Es el que menos intimida: sirve cuando el que consulta llega con un problema personal y necesita sentir que lo van a escuchar.</p>
+        <div class="swatches"><i style="background:#FBFAF8;border-color:#ddd"></i><i style="background:#1B4965"></i><i style="background:#5A6068"></i><i style="background:#14161A"></i><code>#FBFAF8 · #1B4965</code></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <b>Lo que necesitamos que decidan.</b> No hace falta que elijan una paleta. Alcanza con que nos digan dos cosas: si el sitio debe verse oscuro e imponente o claro y accesible, y si prefieren jugar seguro con lo que usa el rubro o diferenciarse. Con esas dos respuestas la paleta la resolvemos nosotros.
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>Parte 2 de 3</div></div>
+</section>
+
+<!-- ============ PROXIMOS PASOS ============ -->
+<section class="page">
+  <div class="phead"><div class="mono">Parte 3 · Cómo seguimos</div><div class="n">Abelleira &amp; Piedra</div></div>
+
+  <h2 class="sec">Los próximos pasos</h2>
+  <p class="sec-sub">El orden importa. Cada paso depende de que el anterior esté cerrado, y el que más suele demorar es el de las fotos.</p>
+
+  <div class="steps">
+    <div class="step"><div class="k">01</div><div><h4>Responden este documento</h4><p>Con las respuestas de la Parte 1 armamos el contenido real del sitio. Sin eso solo podemos maquetar texto de relleno, que es exactamente lo que tiene la demo hoy.</p></div></div>
+    <div class="step"><div class="k">02</div><div><h4>Definimos dirección visual y dominio</h4><p>Elegimos el camino de la Parte 2 y, en paralelo, ustedes registran el dominio y definen las casillas de correo. Conviene arrancarlo ya porque depende de terceros.</p></div></div>
+    <div class="step"><div class="k">03</div><div><h4>Sesión de fotos</h4><p>Fotos de los socios y del estudio. Es lo que más mueve la percepción de un estudio jurídico y lo único que no se puede resolver a último momento.</p></div></div>
+    <div class="step"><div class="k">04</div><div><h4>Diseño y desarrollo</h4><p>Les mostramos el diseño terminado antes de escribir el sitio definitivo, para que los cambios grandes salgan baratos.</p></div></div>
+    <div class="step"><div class="k">05</div><div><h4>Revisión, textos legales y publicación</h4><p>Ustedes revisan textos y aprueban la política de privacidad. Publicamos, medimos y ajustamos.</p></div></div>
+  </div>
+
+  <div class="note">
+    <b>Una sola persona del estudio debería aprobar.</b> El punto donde más se demoran estos proyectos no es el diseño, es la ronda de aprobaciones internas. Necesitamos saber con quién hablamos cuando hay que decidir rápido.
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>Parte 3 de 3</div></div>
+</section>
+
+</body>
+</html>

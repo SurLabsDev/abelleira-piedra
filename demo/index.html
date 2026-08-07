@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abelleira & Piedra | Abogados</title>
+<meta name="description" content="Abelleira & Piedra ABOGADOS. Asesoramiento jurídico integral, experiencia y compromiso.">
+<style>
+:root{--navy:#041c34;--navy2:#092947;--gold:#b99652;--gold2:#d2b574;--cream:#f5f3ee;--white:#fff;--ink:#172536}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.6;background:var(--cream)}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,90%);margin:auto}
+header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(4,28,52,.97);border-bottom:1px solid rgba(210,181,116,.22)}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:15px;color:var(--gold2)}
+.logo-mark{font-family:Georgia,serif;font-size:48px;line-height:.8;letter-spacing:-7px;border-right:1px solid var(--gold);padding-right:16px}
+.logo-text{font-size:12px;letter-spacing:2px;line-height:1.2}
+.logo-text strong{display:block;font-size:17px;letter-spacing:1.3px}
+.menu{display:flex;align-items:center;gap:27px;color:#fff;font-size:11px;letter-spacing:.7px}
+.menu a:hover{color:var(--gold2)}
+.btn{display:inline-block;padding:13px 24px;background:var(--gold);border:1px solid var(--gold);color:#061b31;font-size:11px;font-weight:bold;letter-spacing:1.1px;transition:.25s}
+.btn:hover{background:transparent;color:var(--gold2)}
+.btn-outline{background:transparent;color:var(--gold2)}
+.mobile{display:none;color:var(--gold2);font-size:26px}
+.hero{min-height:760px;padding-top:82px;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,rgba(3,20,39,.99) 0%,rgba(3,20,39,.95) 42%,rgba(3,20,39,.54) 72%,rgba(3,20,39,.25) 100%),url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2000&q=85") center/cover}
+.hero-content{max-width:670px;padding:80px 0}
+.kicker{color:var(--gold2);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:17px}
+.hero h1{font-size:clamp(48px,6vw,78px);line-height:1.03;color:#fff}
+.hero h1 strong{display:block;color:var(--gold2);font-weight:400}
+.hero h1 span{display:block;font-family:Arial,sans-serif;font-size:23px;letter-spacing:8px;color:#fff;margin-top:17px}
+.hero p{font-size:18px;color:#e2e7ed;max-width:570px;margin:28px 0}
+.actions{display:flex;gap:13px;flex-wrap:wrap}
+section{padding:92px 0}
+.section-head{text-align:center;max-width:780px;margin:0 auto 52px}
+.section-head h2{font-size:43px;line-height:1.15;color:var(--navy)}
+.section-head p{margin-top:15px;color:#5e6875}
+.practice{background:var(--navy);color:#fff}
+.practice .section-head h2{color:#fff}
+.practice .section-head p{color:#cbd3dc}
+.practice-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid rgba(210,181,116,.28);border-bottom:1px solid rgba(210,181,116,.28)}
+.practice-card{padding:30px 18px;text-align:center;border-right:1px solid rgba(210,181,116,.22)}
+.practice-card:last-child{border-right:0}
+.icon{font-size:34px;color:var(--gold2);margin-bottom:14px}
+.practice-card h3{font-family:Arial,sans-serif;font-size:14px;letter-spacing:.5px;margin-bottom:9px}
+.practice-card p{font-size:12px;color:#c7d0da}
+.center-btn{text-align:center;margin-top:35px}
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about h2{font-size:48px;color:var(--navy);line-height:1.12}
+.about p{color:#5d6875;margin-top:18px}
+.about-box{background:var(--navy);padding:48px;color:#fff}
+.about-box h3{font-size:31px;color:var(--gold2);margin-bottom:24px}
+.about-list{display:grid;gap:20px}
+.about-list div{border-left:1px solid var(--gold);padding-left:18px}
+.about-list h4{color:var(--gold2);font-family:Georgia,serif;font-size:21px;font-weight:400}
+.about-list p{color:#d1d7df;font-size:13px;margin-top:3px}
+.team{background:#fff}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.person{background:var(--navy);color:#fff}
+.person-photo{height:290px;background:linear-gradient(135deg,#29435e,#081e37);display:flex;align-items:center;justify-content:center;color:var(--gold2);font-family:Georgia,serif;font-size:70px}
+.person-info{padding:22px;text-align:center}
+.person-info h3{font-size:22px;color:var(--gold2)}
+.person-info small{display:block;color:#d6dce4;margin-top:6px;font-size:11px}
+.why{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+.why-item{text-align:center;padding:20px}
+.why-item h3{font-size:23px;color:var(--navy)}
+.why-item p{font-size:13px;color:#5e6875;margin-top:9px}
+.contact{background:var(--navy);color:#fff}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:85px}
+.contact h2{font-size:48px;color:var(--gold2);line-height:1.1}
+.contact-intro{color:#d3d9e0;margin:17px 0 30px}
+.info{display:grid;gap:13px;color:#e4e8ed;font-size:14px}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:14px 15px;background:rgba(255,255,255,.035);border:1px solid rgba(210,181,116,.45);color:#fff;font:inherit}
+textarea{min-height:140px;resize:vertical}
+footer{background:#021426;color:#adb7c3;text-align:center;padding:25px;font-size:11px}
+@media(max-width:1050px){.menu{gap:15px}.practice-grid{grid-template-columns:repeat(3,1fr)}.practice-card:nth-child(3){border-right:0}.practice-card:nth-child(-n+3){border-bottom:1px solid rgba(210,181,116,.22)}}
+@media(max-width:850px){.menu{display:none}.mobile{display:block}.about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}.team-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){section{padding:65px 0}.hero{min-height:680px}.hero h1{font-size:46px}.hero h1 span{font-size:17px;letter-spacing:5px}.practice-grid{grid-template-columns:1fr}.practice-card{border-right:0!important;border-bottom:1px solid rgba(210,181,116,.22)!important}.practice-card:last-child{border-bottom:0!important}.team-grid,.why-grid{grid-template-columns:1fr}.about h2,.contact h2,.section-head h2{font-size:36px}.logo-text strong{font-size:13px}.logo-mark{font-size:40px}}
+</style>
+</head>
+<body>
+<header>
+<nav class="container">
+<a class="logo" href="#inicio">
+<div class="logo-mark">AP</div>
+<div class="logo-text"><strong>ABELLEIRA &amp; PIEDRA</strong>ABOGADOS</div>
+</a>
+<div class="menu">
+<a href="#inicio">INICIO</a><a href="#estudio">EL ESTUDIO</a><a href="#areas">ÁREAS DE PRÁCTICA</a><a href="#equipo">EQUIPO</a><a href="#por-que">¿POR QUÉ ELEGIRNOS?</a><a href="#contacto">CONTACTO</a>
+<a class="btn" href="#contacto">CONSULTA ONLINE</a>
+</div>
+<div class="mobile">☰</div>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+<div class="container"><div class="hero-content">
+<div class="kicker">Estudio jurídico</div>
+<h1>Soluciones jurídicas <strong>con experiencia y compromiso</strong><span>ABELLEIRA &amp; PIEDRA ABOGADOS</span></h1>
+<p>Brindamos asesoramiento jurídico integral a personas y empresas, con un enfoque personalizado y orientado a resultados.</p>
+<div class="actions"><a class="btn" href="#estudio">CONOCÉ MÁS</a><a class="btn btn-outline" href="#estudio">CONOCÉ NUESTRO ESTUDIO</a></div>
+</div></div>
+</section>
+
+<section class="practice" id="areas">
+<div class="container">
+<div class="section-head"><div class="kicker">Áreas de práctica</div><h2>Brindamos soluciones jurídicas en todas las áreas clave</h2><p>Asesoramiento estratégico y personalizado para acompañar a nuestros clientes.</p></div>
+<div class="practice-grid">
+<div class="practice-card"><div class="icon">⚖</div><h3>DERECHO CIVIL</h3><p>Contratos, obligaciones, responsabilidad civil, daños y perjuicios.</p></div>
+<div class="practice-card"><div class="icon">▥</div><h3>DERECHO COMERCIAL</h3><p>Empresas, contratos comerciales, reestructuras y negocios.</p></div>
+<div class="practice-card"><div class="icon">♙</div><h3>DERECHO LABORAL</h3><p>Asesoramiento a empresas y trabajadores, negociaciones y litigios.</p></div>
+<div class="practice-card"><div class="icon">⌂</div><h3>DERECHO INMOBILIARIO</h3><p>Inmuebles, arrendamientos, títulos, fideicomisos y desarrollo.</p></div>
+<div class="practice-card"><div class="icon">▤</div><h3>DERECHO SUCESORIO</h3><p>Planificación sucesoria, testamentos, sucesiones y particiones.</p></div>
+<div class="practice-card"><div class="icon">⚒</div><h3>LITIGIOS</h3><p>Representación legal en procesos judiciales y arbitrales.</p></div>
+</div>
+<div class="center-btn"><a class="btn btn-outline" href="#contacto">CONSULTAR SOBRE UN ÁREA</a></div>
+</div>
+</section>
+
+<section class="about" id="estudio">
+<div class="container about-grid">
+<div><div class="kicker">El estudio</div><h2>Más de 10 años brindando asesoramiento legal de excelencia</h2><p>En Abelleira &amp; Piedra ABOGADOS entendemos que cada caso es único. Nuestro compromiso es ofrecer soluciones jurídicas efectivas, con una mirada estratégica y una atención cercana.</p><p>Trabajamos para comprender profundamente las necesidades de cada cliente y acompañarlo con claridad, profesionalismo y confidencialidad.</p></div>
+<div class="about-box"><h3>Nuestros valores</h3><div class="about-list">
+<div><h4>Confidencialidad</h4><p>Manejamos cada asunto con la máxima reserva y profesionalismo.</p></div>
+<div><h4>Atención personalizada</h4><p>Escuchamos cada caso y diseñamos estrategias a medida.</p></div>
+<div><h4>Experiencia</h4><p>Conocimiento técnico y visión práctica para abordar cada desafío.</p></div>
+<div><h4>Compromiso</h4><p>Nos involucramos con dedicación y responsabilidad.</p></div>
+</div></div>
+</div>
+</section>
+
+<section class="team" id="equipo">
+<div class="container">
+<div class="section-head"><div class="kicker">Nuestro equipo</div><h2>Profesionales comprometidos con cada caso</h2><p>Conocé a los integrantes de Abelleira &amp; Piedra ABOGADOS.</p></div>
+<div class="team-grid">
+<div class="person"><div class="person-photo">AP</div><div class="person-info"><h3>Dr. Nombre Apellido</h3><small>SOCIO FUNDADOR · DERECHO CIVIL Y COMERCIAL</small></div></div>
+<div class="person"><div class="person-photo">AP</div><div class="person-info"><h3>Dra. Nombre Apellido</h3><small>SOCIA FUNDADORA · DERECHO LABORAL</small></div></div>
+<div class="person"><div class="person-photo">AP</div><div class="person-info"><h3>Dr. Nombre Apellido</h3><small>ASOCIADO · DERECHO INMOBILIARIO</small></div></div>
+<div class="person"><div class="person-photo">AP</div><div class="person-info"><h3>Dra. Nombre Apellido</h3><small>ASOCIADA · DERECHO SUCESORIO</small></div></div>
+</div>
+</div>
+</section>
+
+<section class="why" id="por-que">
+<div class="container">
+<div class="section-head"><div class="kicker">¿Por qué elegirnos?</div><h2>Una forma de trabajar pensada para cada cliente</h2></div>
+<div class="why-grid">
+<div class="why-item"><div class="icon">◉</div><h3>Experiencia</h3><p>Trayectoria y conocimiento para brindar asesoramiento jurídico de excelencia.</p></div>
+<div class="why-item"><div class="icon">◇</div><h3>Confidencialidad</h3><p>Cada asunto es tratado con máxima reserva, seriedad y profesionalismo.</p></div>
+<div class="why-item"><div class="icon">▢</div><h3>Atención personalizada</h3><p>Escuchamos cada situación y diseñamos estrategias según sus necesidades.</p></div>
+<div class="why-item"><div class="icon">✦</div><h3>Compromiso</h3><p>Nos involucramos en cada caso con dedicación y responsabilidad.</p></div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contacto">
+<div class="container contact-grid">
+<div><div class="kicker">Contacto</div><h2>Hablemos sobre su caso.</h2><p class="contact-intro">Complete el formulario y nos pondremos en contacto con usted.</p>
+<div class="info"><div>☎ +598 0000 0000</div><div>✉ contacto@abelleirapiedra.com.uy</div><div>◉ WhatsApp: +598 00 000 000</div><div>⌖ Montevideo, Uruguay</div></div></div>
+<form onsubmit="event.preventDefault(); alert('Gracias. Su consulta fue registrada. En la versión final conectaremos este formulario con el correo del estudio.');">
+<input type="text" placeholder="Nombre y apellido" required>
+<input type="email" placeholder="Correo electrónico" required>
+<input type="tel" placeholder="Teléfono">
+<textarea placeholder="Cuéntenos brevemente su consulta"></textarea>
+<button class="btn" type="submit">ENVIAR CONSULTA</button>
+</form>
+</div>
+</section>
+</main>
+<footer>© 2026 Abelleira &amp; Piedra ABOGADOS · Todos los derechos reservados.</footer>
+</body>
+</html>
