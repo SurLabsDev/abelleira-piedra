@@ -47,9 +47,13 @@
 }
 
 /* B. Tribunal. Verde profundo y hueso, sin metal. El acento es el hueso.
-   Va tambien en :root para que los tokens resuelvan aunque falte data-tema.
-   Misma especificidad que los otros bloques, y como estan despues, ganan ellos. */
-:root,
+
+   El default va con html:not([data-tema]) y NO con :root. Con :root este bloque
+   le ganaba a [data-tema="institucional"]: misma especificidad, y como el de
+   tribunal esta escrito despues, pisaba al de arriba. El sitio pedia
+   institucional y pintaba verde. Con :not() el default solo aplica cuando de
+   verdad no hay tema, y no compite con ninguno. */
+html:not([data-tema]),
 [data-tema="tribunal"] {
   --t-fondo: #0e2a21;
   --t-superficie: #153629;
