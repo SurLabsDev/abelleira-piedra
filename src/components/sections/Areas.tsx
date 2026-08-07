@@ -21,7 +21,7 @@ export default function Areas() {
     const area = areas[activa];
 
     return (
-        <section id="areas" className="scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
+        <section id="areas" className="px-5 py-24 sm:px-8 sm:py-32">
             <div className="mx-auto max-w-[1240px]">
                 <div className="anim-scroll max-w-[34ch]">
                     <h2 className="tipo-display-suelto text-[2rem] sm:text-5xl">

@@ -14,7 +14,7 @@ import { equipo } from "@/lib/contenido";
  */
 export default function Equipo() {
     return (
-        <section id="equipo" className="scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
+        <section id="equipo" className="px-5 py-24 sm:px-8 sm:py-32">
             <div className="mx-auto max-w-[1240px]">
                 <div className="anim-scroll max-w-[40ch]">
                     <h2 className="tipo-display-suelto text-[2rem] sm:text-5xl">
@@ -26,7 +26,7 @@ export default function Equipo() {
                     </p>
                 </div>
 
-                <div className="mt-12 grid gap-px border border-filete bg-filete sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-12 grid gap-px border border-filete bg-filete sm:mt-16 sm:grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
                     {equipo.map((p, i) => (
                         <article
                             key={`${p.nombre}-${i}`}

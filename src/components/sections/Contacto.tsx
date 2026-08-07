@@ -29,7 +29,7 @@ type Estado =
     | { tipo: "vista-previa"; mensaje: string };
 
 const campo =
-    "w-full rounded-marca border border-filete bg-transparent px-3.5 py-3 text-[0.9375rem] text-texto transition-colors focus:border-acento focus:outline-none";
+    "w-full rounded-marca border border-borde-control bg-transparent px-3.5 py-3 text-[0.9375rem] text-texto transition-colors focus:border-acento focus:outline-none";
 
 /* Etiqueta arriba del input y en caja normal. Nunca placeholder como etiqueta:
    al empezar a escribir el usuario pierde la referencia de que campo es. */
@@ -64,14 +64,20 @@ export default function Contacto() {
         }
 
         const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
-        const ventana = window.open(url, "_blank", "noopener,noreferrer");
+
+        // Sin cadena de features. Pasar "noopener" ahi hace que window.open devuelva
+        // null SIEMPRE, por spec, con lo cual todo envio exitoso se reportaba como
+        // popup bloqueado. Se anula el opener a mano, que da la misma proteccion y
+        // deja distinguir el caso real de bloqueo.
+        const ventana = window.open(url, "_blank");
+        if (ventana) ventana.opener = null;
         setEstado(ventana ? { tipo: "abierto" } : { tipo: "bloqueado", url });
     };
 
     return (
         <section
             id="contacto"
-            className="scroll-mt-24 bg-superficie px-5 py-24 sm:px-8 sm:py-32"
+            className="bg-superficie px-5 py-24 sm:px-8 sm:py-32"
         >
             <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-12 lg:gap-20">
                 <div className="anim-scroll lg:col-span-5">

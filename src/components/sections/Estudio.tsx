@@ -1,4 +1,4 @@
-import { valores } from "@/lib/contenido";
+import { DECLARACION, valores } from "@/lib/contenido";
 
 /**
  * Declaracion a ancho completo y despues los valores en una fila dividida por
@@ -15,12 +15,11 @@ export default function Estudio() {
     return (
         <section
             id="estudio"
-            className="scroll-mt-24 bg-superficie px-5 py-24 sm:px-8 sm:py-32"
+            className="bg-superficie px-5 py-24 sm:px-8 sm:py-32"
         >
             <div className="mx-auto max-w-[1240px]">
                 <p className="anim-scroll tipo-display-suelto max-w-[24ch] text-[1.75rem] leading-[1.25] sm:text-4xl lg:text-[2.75rem]">
-                    Un estudio chico atiende distinto. Quien escucha su caso la primera vez
-                    es el mismo que lo lleva hasta el final.
+                    {DECLARACION}
                 </p>
 
                 <div

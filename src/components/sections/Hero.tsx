@@ -66,28 +66,21 @@ export default function Hero() {
             </p>
 
             <div className="mx-auto w-full max-w-[1240px]">
+                {/* Indice, no navegacion. Eran enlaces a #areas, igual que el boton
+                    "Ver areas" que esta 40px mas abajo: dos enlaces al mismo lugar con
+                    etiquetas distintas. El boton se queda con esa intencion. */}
                 <ul
                     className="anim-entrada mb-6 flex flex-wrap items-center gap-x-6 gap-y-2 sm:mb-8"
                     style={{ animationDelay: "320ms" }}
                 >
                     {destacadas.map((a) => (
-                        <li key={a.id}>
-                            <a
-                                href="#areas"
-                                className="tipo-etiqueta transition-colors hover:text-texto"
-                            >
-                                {a.titulo.replace("Derecho ", "")}
-                            </a>
+                        <li key={a.id} className="tipo-etiqueta">
+                            {a.titulo.replace("Derecho ", "")}
                         </li>
                     ))}
                     {restantes > 0 && (
-                        <li>
-                            <a
-                                href="#areas"
-                                className="tipo-etiqueta text-acento transition-opacity hover:opacity-75"
-                            >
-                                y {restantes} {restantes === 1 ? "área más" : "áreas más"}
-                            </a>
+                        <li className="tipo-etiqueta text-acento">
+                            y {restantes} {restantes === 1 ? "área más" : "áreas más"}
                         </li>
                     )}
                 </ul>
@@ -114,7 +107,7 @@ export default function Hero() {
                     </a>
                     <a
                         href="#areas"
-                        className="rounded-marca border border-filete px-6 py-3.5 text-[0.9375rem] transition-colors hover:border-texto active:scale-[0.98]"
+                        className="rounded-marca border border-borde-control px-6 py-3.5 text-[0.9375rem] transition-colors hover:border-texto active:scale-[0.98]"
                     >
                         Ver áreas
                     </a>

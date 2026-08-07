@@ -109,6 +109,15 @@ export const equipo: Integrante[] = [
  * Cuando contesten por que un cliente los elige a ellos y no al de la esquina,
  * esto se reescribe con la respuesta real y pasa a ser el argumento del sitio.
  */
+/**
+ * PENDIENTE (brief 1.2). La primera version decia "Un estudio chico atiende
+ * distinto", que afirma el tamaño del estudio, y nadie nos lo confirmo. Esta
+ * version es una promesa de servicio, que el estudio puede aprobar o corregir,
+ * y no un dato sobre ellos que nos inventamos.
+ */
+export const DECLARACION =
+    "Quien escucha su caso la primera vez es quien lo lleva hasta el final.";
+
 export const valores = [
     {
         titulo: "Reserva",

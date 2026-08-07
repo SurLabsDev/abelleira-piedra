@@ -20,6 +20,8 @@
   --color-acento: var(--t-acento);
   --color-acento-fg: var(--t-acento-fg);
   --color-filete: var(--t-filete);
+  /* Los bordes de un control necesitan 3:1, mucho mas que un filete decorativo. */
+  --color-borde-control: var(--t-borde-control);
 
   --font-display: var(--t-display);
   --font-cuerpo: var(--t-cuerpo);
@@ -38,12 +40,16 @@
   --t-acento: #c3a265;
   --t-acento-fg: #0b1b2e;
   --t-filete: rgb(232 228 220 / 0.14);
+  --t-borde-control: rgb(232 228 220 / 0.45);
   --t-display: var(--font-lora);
   --t-cuerpo: var(--font-inter-tight);
   color-scheme: dark;
 }
 
-/* B. Tribunal. Verde profundo y hueso, sin metal. El acento es el hueso. */
+/* B. Tribunal. Verde profundo y hueso, sin metal. El acento es el hueso.
+   Va tambien en :root para que los tokens resuelvan aunque falte data-tema.
+   Misma especificidad que los otros bloques, y como estan despues, ganan ellos. */
+:root,
 [data-tema="tribunal"] {
   --t-fondo: #0e2a21;
   --t-superficie: #153629;
@@ -52,6 +58,7 @@
   --t-acento: #f1eee4;
   --t-acento-fg: #0e2a21;
   --t-filete: rgb(241 238 228 / 0.16);
+  --t-borde-control: rgb(241 238 228 / 0.45);
   --t-display: var(--font-instrument);
   --t-cuerpo: var(--font-instrument);
   color-scheme: dark;
@@ -66,6 +73,7 @@
   --t-acento: #8a2233;
   --t-acento-fg: #ffffff;
   --t-filete: rgb(25 26 29 / 0.14);
+  --t-borde-control: rgb(25 26 29 / 0.50);
   --t-display: var(--font-newsreader);
   --t-cuerpo: var(--font-inter-tight);
   color-scheme: light;
@@ -80,6 +88,7 @@
   --t-acento: #1b4965;
   --t-acento-fg: #ffffff;
   --t-filete: rgb(20 22 26 / 0.13);
+  --t-borde-control: rgb(20 22 26 / 0.48);
   --t-display: var(--font-geist);
   --t-cuerpo: var(--font-geist);
   color-scheme: light;
@@ -91,6 +100,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* El header es fixed y mide 72px. Sin esto el ancla deja el titular debajo del
+     header, y lo mismo le pasa al foco cuando se navega con teclado. */
+  scroll-padding-top: 6rem;
   /* La barra de scroll siempre presente: sin esto, pasar de una seccion corta a
      una larga corre el layout unos pixeles y se lee como un salto. */
   scrollbar-gutter: stable;
@@ -124,6 +136,7 @@ body {
    El caracter sale de la escala y del tracking, no de meter mas pesos.
 --------------------------------------------------------------------------- */
 
+@layer components {
 .tipo-display {
   font-family: var(--font-display), Georgia, serif;
   font-weight: 500;
@@ -153,6 +166,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--color-tenue);
+}
 }
 
 /* ---------------------------------------------------------------------------
