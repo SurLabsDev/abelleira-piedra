@@ -1,26 +1,36 @@
 /**
  * Todo el contenido del sitio en un solo lugar.
  *
- * REGLA: nada de esto se inventa. Cada campo marcado PENDIENTE espera una
- * respuesta del estudio y hasta que llegue lleva un valor que se lee como
- * relleno a proposito. La demo original decia "mas de 10 anios" sin ninguna
- * fuente y ese es exactamente el error a no repetir: un dato inventado en la
- * web de un estudio juridico es un problema del cliente, no un detalle de
- * maqueta. Ver docs/brief.pdf, Parte 1.
+ * Actualizado con lo que el estudio respondio en el formulario el 18/08/2026.
+ * Lo que sigue marcado PENDIENTE es lo que NO contestaron o dijeron que iba a
+ * llegar despues. Nada de eso se completa a ojo: un dato inventado en la web de
+ * un estudio juridico es un problema del cliente, no un detalle de maqueta.
  */
 
-/** PENDIENTE (brief 1.1). Con "&" o con "y", con "Abogados" o "Estudio Juridico". */
+/** Confirmado: "Abelleira & Piedra Abogados". */
 export const ESTUDIO = "Abelleira & Piedra";
 export const ESTUDIO_BAJADA = "Abogados";
+/** Confirmado: la forma corta que usan es A&P. */
+export const MARCA_CORTA = "A&P";
 
-/** PENDIENTE (brief 1.1). Numero real con codigo de pais, y si es linea del estudio o celular personal. */
+/** PENDIENTE. Dijeron que sacan una linea nueva para esto y todavia no la tienen. */
 export const WHATSAPP = "";
-/** PENDIENTE (brief 1.1). Casilla que alguien lee todos los dias. */
+/**
+ * PENDIENTE. Hoy usan abelleirajimena@gmail.com y danielpiedra@hotmail.com.
+ * No se publican: una casilla de gmail en la web de un estudio juridico resta
+ * mas de lo que suma, y ademas van a tener casilla propia con el dominio.
+ */
 export const EMAIL = "";
-/** PENDIENTE (brief 1.2). Calle, numero, piso y apartamento, si deciden publicarla. */
+/** PENDIENTE. Estan comprando oficina; publican la direccion cuando se instalen. */
 export const DIRECCION = "Montevideo, Uruguay";
-/** PENDIENTE (brief 1.3). Mismo dia habil, 24 o 48 horas, o sin plazo. */
-export const PLAZO_RESPUESTA = "";
+/** Confirmado: dentro de las 48 horas habiles. */
+export const PLAZO_RESPUESTA = "dentro de las 48 horas hábiles";
+/** Confirmado: lunes a viernes de 10 a 18, con cita previa, urgencias 24 horas. */
+export const HORARIO = "Lunes a viernes de 10 a 18 h, con cita previa";
+export const URGENCIAS = "Urgencias, las 24 horas";
+/** Confirmado. Sirve para decir donde trabajan sin publicar todavia una direccion. */
+export const ALCANCE =
+    "Montevideo y Ciudad de la Costa, con asuntos en todo el país. También atendemos a extranjeros y a uruguayos en el exterior, por videollamada.";
 
 export interface Area {
     id: string;
@@ -28,64 +38,56 @@ export interface Area {
     /** Nombre del icono de Phosphor. El mapa esta en Areas.tsx. */
     icono: string;
     resumen: string;
-    /** Lo que diria un cliente, no lo que diria un abogado. PENDIENTE (brief 1.2). */
+    /** Lo que diria un cliente, no lo que diria un abogado. */
     ejemplos: string[];
 }
 
 /**
- * PENDIENTE (brief 1.1): confirmar cuales atienden de verdad, cual sobra y cual
- * falta. PENDIENTE (brief 1.5): el orden. Hoy es el de la demo, que no responde
- * a ningun criterio de negocio. Cuando prioricen, la primera es la que mas peso
- * tiene que llevar en la pagina.
+ * Las CUATRO areas que el estudio confirmo que ejerce, en el orden de prioridad
+ * que ellos mismos dieron: penal, laboral y familia son las que quieren que la
+ * web les traiga.
+ *
+ * La demo listaba seis y solo dos coincidian. Sucesorio, Inmobiliario, Comercial
+ * y Litigios salieron: no los ejercen. "Litigios" ademas no era un area, era una
+ * modalidad que atraviesa a las otras cuatro.
+ *
+ * OJO con el resumen de Civil: dijeron que la unica consulta que NO quieren es
+ * responsabilidad medica, que es una especie de responsabilidad civil por danos.
+ * Por eso ese texto habla de contratos e incumplimientos y no de "danos y
+ * perjuicios", que era justo el anzuelo.
  */
 export const areas: Area[] = [
+    {
+        id: "penal",
+        icono: "Gavel",
+        titulo: "Derecho penal",
+        resumen:
+            "Defensa y representación en todas las etapas del proceso, desde la primera citación hasta el juicio.",
+        ejemplos: ["Me citaron a declarar y no sé qué hacer", "Detuvieron a un familiar"],
+    },
     {
         id: "laboral",
         icono: "Briefcase",
         titulo: "Derecho laboral",
         resumen:
-            "Despidos, reclamos, negociaciones y litigios, del lado de la empresa o del trabajador.",
-        ejemplos: ["Me despidieron y no sé qué me corresponde", "Tengo un reclamo de un ex empleado"],
+            "Asesoramiento a empresas en su relación con el personal, y representación en reclamos y litigios.",
+        ejemplos: ["Tengo un reclamo de un ex empleado", "Necesito ordenar los contratos del personal"],
     },
     {
-        id: "sucesorio",
-        icono: "Scroll",
-        titulo: "Derecho sucesorio",
+        id: "familia",
+        icono: "UsersThree",
+        titulo: "Derecho de familia",
         resumen:
-            "Sucesiones, testamentos, particiones y planificación para que el trámite no se convierta en un conflicto.",
-        ejemplos: ["Tengo que hacer la sucesión de mi papá", "Quiero dejar todo ordenado en vida"],
-    },
-    {
-        id: "inmobiliario",
-        icono: "HouseLine",
-        titulo: "Derecho inmobiliario",
-        resumen:
-            "Compraventas, arrendamientos, títulos, fideicomisos y desarrollos, desde la promesa hasta la escritura.",
-        ejemplos: ["Quiero sacar a un inquilino que no paga", "Voy a comprar y quiero revisar el título"],
-    },
-    {
-        id: "comercial",
-        icono: "Buildings",
-        titulo: "Derecho comercial",
-        resumen:
-            "Sociedades, contratos, reestructuras y la operativa diaria de una empresa que necesita respaldo.",
-        ejemplos: ["Vamos a armar una sociedad entre socios", "Necesito revisar un contrato antes de firmar"],
+            "Divorcios, tenencia, visitas y pensiones, en un momento donde lo que más se necesita es claridad.",
+        ejemplos: ["Nos estamos separando y hay hijos", "No me está pasando la pensión"],
     },
     {
         id: "civil",
         icono: "Handshake",
         titulo: "Derecho civil",
         resumen:
-            "Contratos, obligaciones, responsabilidad civil, daños y perjuicios.",
-        ejemplos: ["Tuve un accidente y quiero reclamar", "Me incumplieron un contrato"],
-    },
-    {
-        id: "litigios",
-        icono: "Gavel",
-        titulo: "Litigios",
-        resumen:
-            "Representación en juicio y en arbitraje, cuando ya no queda margen para acordar.",
-        ejemplos: ["Me llegó una demanda", "Agoté las instancias y hay que ir a juicio"],
+            "Contratos, obligaciones y reclamos por incumplimiento, antes de firmar y después también.",
+        ejemplos: ["Me incumplieron un contrato", "Quiero revisar algo antes de firmarlo"],
     },
 ];
 
@@ -96,36 +98,44 @@ export interface Integrante {
 }
 
 /**
- * PENDIENTE (brief 1.1). La demo trae cuatro tarjetas que dicen literalmente
- * "Dr. Nombre Apellido", asi que ni siquiera sabemos si son cuatro o son dos.
- * Se dejan con nombre de relleno a proposito, para que nadie los confunda con
- * datos reales en una presentacion. Cada persona ademas tiene que confirmar
- * por escrito que acepta que se publique su nombre.
+ * Confirmado: son DOS, no cuatro. La demo traia cuatro tarjetas de relleno y dos
+ * de ellas decian "Asociado", que contradice de frente el diferencial que el
+ * propio estudio enuncio: el trabajo no se delega en nadie.
+ *
+ * PENDIENTE: no dijeron que area lleva cada uno. Se deja vacio a proposito hasta
+ * que lo confirmen, no se reparte a ojo.
  */
 export const equipo: Integrante[] = [
-    { nombre: "Dr. Nombre Apellido", rol: "Socio fundador", areas: "Civil y comercial" },
-    { nombre: "Dra. Nombre Apellido", rol: "Socia fundadora", areas: "Laboral" },
-    { nombre: "Dr. Nombre Apellido", rol: "Asociado", areas: "Inmobiliario" },
-    { nombre: "Dra. Nombre Apellido", rol: "Asociada", areas: "Sucesorio" },
+    { nombre: "Dra. María Jimena Abelleira", rol: "Socia", areas: "" },
+    { nombre: "Dr. Daniel Piedra", rol: "Socio", areas: "" },
 ];
 
 /**
- * La demo tenia estos cuatro valores dos veces: una en "El estudio" y otra en
- * "Por que elegirnos". Era la misma seccion repetida. Van una sola vez.
- *
- * PENDIENTE (brief 1.2): son atributos que declara cualquier estudio del pais.
- * Cuando contesten por que un cliente los elige a ellos y no al de la esquina,
- * esto se reescribe con la respuesta real y pasa a ser el argumento del sitio.
- */
-/**
- * PENDIENTE (brief 1.2). La primera version decia "Un estudio chico atiende
- * distinto", que afirma el tamaño del estudio, y nadie nos lo confirmo. Esta
- * version es una promesa de servicio, que el estudio puede aprobar o corregir,
- * y no un dato sobre ellos que nos inventamos.
+ * Confirmado, y es textual de ellos: "Somos un estudio boutique. Los clientes
+ * cuando vienen saben que el trabajo lo haremos nosotros y no sera delegado en
+ * nadie." Ese es el diferencial que dieron y reemplaza al de relleno.
  */
 export const DECLARACION =
-    "Quien escucha su caso la primera vez es quien lo lleva hasta el final.";
+    "El trabajo lo hacemos nosotros. No se delega en nadie.";
 
+/**
+ * PENDIENTE: dijeron que tienen una frase propia y todavia no la pasaron.
+ * Este claim es provisorio y no se publica sin que lo aprueben.
+ */
+export const CLAIM = "Asesoramiento jurídico con criterio propio";
+
+/**
+ * Los 15 anos son de ELLOS ejerciendo, no del estudio con esta integracion, que
+ * arranco en agosto de 2026. Redactado asi es cierto y lo pueden sostener si se
+ * lo preguntan. Decir "el estudio tiene 15 anos" seria falso.
+ */
+export const TRAYECTORIA = "Quince años ejerciendo, con un estudio propio desde 2026";
+
+/**
+ * Reescritos con lo que respondieron. "Reserva" y "Criterio" sobrevivieron
+ * porque encajan; los otros dos salen de respuestas concretas: no delegan el
+ * trabajo, y responden dentro de las 48 horas habiles con urgencias 24 horas.
+ */
 export const valores = [
     {
         icono: "Lock",
@@ -135,7 +145,7 @@ export const valores = [
     {
         icono: "ChatCircleDots",
         titulo: "Respuesta",
-        texto: "Sabe a quién escribirle y cuánto va a tardar en tener una respuesta.",
+        texto: "Respondemos dentro de las 48 horas hábiles. Las urgencias, a cualquier hora.",
     },
     {
         icono: "Compass",

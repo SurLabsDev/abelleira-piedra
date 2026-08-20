@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { areas } from "@/lib/contenido";
+import { areas, CLAIM } from "@/lib/contenido";
 
 /**
  * Hero a pantalla completa con foto de fondo.
@@ -52,7 +52,7 @@ export default function Hero() {
                     className="anim-entrada tipo-display max-w-[13ch] text-[3rem] sm:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.25rem]"
                     style={{ animationDelay: "80ms" }}
                 >
-                    Asesoramiento jurídico con criterio propio
+                    {CLAIM}
                 </h1>
             </div>
 

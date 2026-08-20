@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { WhatsappLogo, EnvelopeSimple, MapPin, CaretDown } from "@phosphor-icons/react/dist/ssr";
-import { WHATSAPP, EMAIL, DIRECCION, PLAZO_RESPUESTA, areas } from "@/lib/contenido";
+import { WhatsappLogo, EnvelopeSimple, MapPin, Clock, CaretDown } from "@phosphor-icons/react/dist/ssr";
+import { WHATSAPP, EMAIL, PLAZO_RESPUESTA, HORARIO, URGENCIAS, ALCANCE, areas } from "@/lib/contenido";
 
 /**
  * El formulario no postea a ningun lado: arma un mensaje con los campos y abre
@@ -90,18 +90,30 @@ export default function Contacto() {
                     </p>
 
                     <div className="mt-10 space-y-4">
-                        {/* PENDIENTE (brief 1.1): numero, casilla y direccion reales. */}
-                        <p className="flex items-center gap-3 text-[0.9375rem] text-tenue">
-                            <WhatsappLogo size={18} weight="light" className="shrink-0 text-acento" />
-                            {WHATSAPP || "WhatsApp a confirmar"}
+                        {/* PENDIENTE: numero, casilla y direccion. Mientras no esten, no
+                            se inventan ni se publica un gmail personal. */}
+                        {WHATSAPP && (
+                            <p className="flex items-center gap-3 text-[0.9375rem] text-tenue">
+                                <WhatsappLogo size={18} weight="light" className="shrink-0 text-acento" />
+                                {WHATSAPP}
+                            </p>
+                        )}
+                        {EMAIL && (
+                            <p className="flex items-center gap-3 text-[0.9375rem] text-tenue">
+                                <EnvelopeSimple size={18} weight="light" className="shrink-0 text-acento" />
+                                {EMAIL}
+                            </p>
+                        )}
+                        <p className="flex items-start gap-3 text-[0.9375rem] text-tenue">
+                            <MapPin size={18} weight="light" className="mt-0.5 shrink-0 text-acento" />
+                            <span>{ALCANCE}</span>
                         </p>
-                        <p className="flex items-center gap-3 text-[0.9375rem] text-tenue">
-                            <EnvelopeSimple size={18} weight="light" className="shrink-0 text-acento" />
-                            {EMAIL || "Casilla a confirmar"}
-                        </p>
-                        <p className="flex items-center gap-3 text-[0.9375rem] text-tenue">
-                            <MapPin size={18} weight="light" className="shrink-0 text-acento" />
-                            {DIRECCION}
+                        <p className="flex items-start gap-3 text-[0.9375rem] text-tenue">
+                            <Clock size={18} weight="light" className="mt-0.5 shrink-0 text-acento" />
+                            <span>
+                                {HORARIO}
+                                <span className="mt-0.5 block text-tenue/80">{URGENCIAS}</span>
+                            </span>
                         </p>
                     </div>
 

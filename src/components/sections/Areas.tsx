@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-    Briefcase, Buildings, Gavel, Handshake, HouseLine, Scroll,
-} from "@phosphor-icons/react/dist/ssr";
+import { Briefcase, Gavel, Handshake, UsersThree } from "@phosphor-icons/react/dist/ssr";
 import { areas } from "@/lib/contenido";
 
 /**
@@ -11,7 +9,7 @@ import { areas } from "@/lib/contenido";
  * asi optimizePackageImports puede podar y solo viajan los seis iconos que se
  * usan, en vez de la familia entera.
  */
-const iconos = { Briefcase, Buildings, Gavel, Handshake, HouseLine, Scroll } as const;
+const iconos = { Briefcase, Gavel, Handshake, UsersThree } as const;
 
 /**
  * Indice con panel de detalle, no seis tarjetas iguales.

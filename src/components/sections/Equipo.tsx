@@ -16,13 +16,12 @@ import { equipo } from "@/lib/contenido";
  */
 
 function iniciales(nombre: string) {
-    return nombre
-        .replace(/^(Dr|Dra|Esc)\.?\s*/i, "")
-        .split(/\s+/)
-        .slice(0, 2)
-        .map((p) => p[0])
-        .join("")
-        .toUpperCase();
+    // Dra antes que Dr: con la alternacion al reves, "Dra. Maria" perdia solo
+    // "Dr" y quedaba "a. Maria", que daba las iniciales "AM" en vez de "MA".
+    const partes = nombre.replace(/^(Dra|Dr|Esc)\.?\s*/i, "").split(/\s+/).filter(Boolean);
+    if (partes.length === 0) return "";
+    // Nombre y apellido, no los dos nombres de pila: "Maria Jimena Abelleira" es MA.
+    return (partes[0][0] + (partes.length > 1 ? partes[partes.length - 1][0] : "")).toUpperCase();
 }
 
 export default function Equipo() {
@@ -43,11 +42,11 @@ export default function Equipo() {
                     por el gap, asi que con 3 o 5 integrantes las columnas fijas
                     dejaban celdas pintadas del color del filete. El estudio todavia
                     no confirmo cuantos son (brief 1.1). */}
-                <div className="mt-12 grid gap-px border border-filete bg-filete sm:mt-16 sm:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
+                <div className="mt-12 grid gap-6 sm:mt-16 sm:grid-cols-[repeat(auto-fit,minmax(15rem,20rem))]">
                     {equipo.map((p, i) => (
                         <article
                             key={`${p.nombre}-${i}`}
-                            className="anim-scroll group bg-fondo"
+                            className="anim-scroll group overflow-hidden rounded-marca border border-filete bg-fondo"
                             style={{ transitionDelay: `${i * 70}ms` }}
                         >
                             {/* PENDIENTE (brief 1.2): retrato profesional, 3:4. */}
@@ -65,7 +64,9 @@ export default function Equipo() {
                             </div>
 
                             <div className="p-6">
-                                <p className="tipo-etiqueta">{p.areas}</p>
+                                {/* PENDIENTE: no dijeron que area lleva cada uno. Si esta
+                                    vacio no se renderiza, en vez de dejar un hueco. */}
+                                {p.areas && <p className="tipo-etiqueta">{p.areas}</p>}
                                 <h3 className="tipo-display-suelto mt-3 text-[1.25rem] leading-tight">
                                     {p.nombre}
                                 </h3>
