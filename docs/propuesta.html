@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Abelleira &amp; Piedra Abogados | Propuesta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* La portada sangra a full. El resto fluye con margenes de @page, para que
+   una seccion que ocupa dos hojas mantenga el margen arriba en la segunda. */
+@page { size: A4; margin: 17mm 18mm 15mm; }
+@page :first { margin: 0; }
+
+:root{
+  --ink:#0d0c0b;
+  --ink-soft:#3d3a35;
+  --bone:#faf8f5;
+  --rule:#ddd7cd;
+  --dim:#6b665e;
+  --ember:#c9440d;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  font-family:"Inter Tight",-apple-system,Helvetica,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  font-size:10.2pt;
+  line-height:1.55;
+}
+
+.cover{
+  width:210mm; height:297mm;
+  padding:26mm 18mm 22mm;
+  display:flex; flex-direction:column; justify-content:space-between;
+  background:var(--ink); color:var(--bone);
+}
+.sheet{break-before:page}
+
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+
+.mono{font-family:"JetBrains Mono",monospace;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase}
+
+/* ---------- portada ---------- */
+.cover .mono{color:var(--ember)}
+.cover h1{font-size:31pt;line-height:1.04;margin-top:auto;max-width:15ch}
+.cover .lead{color:#b6afa4;max-width:52ch;margin-top:14px;font-size:11pt}
+.cover-rule{height:1px;background:rgba(250,248,245,.18);margin:26px 0 18px}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:9pt;color:#b6afa4}
+.cover-meta strong{display:block;color:var(--bone);font-weight:500;margin-bottom:2px}
+.brandline{display:flex;align-items:center;gap:9px}
+.brandline .disc{width:19px;height:19px;border-radius:50%;background:var(--ember)}
+.brandline span{font-family:"Bricolage Grotesque",serif;font-size:13pt;font-weight:600;letter-spacing:-.01em}
+
+/* ---------- encabezados de pagina ---------- */
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:7px;margin-bottom:22px}
+.phead .mono{color:var(--dim)}
+.phead .n{font-family:"JetBrains Mono",monospace;font-size:7.6pt;color:var(--dim)}
+
+.intro{font-size:10.4pt;color:var(--ink-soft);max-width:62ch;margin-bottom:20px}
+
+h2.sec{font-size:20pt;margin-bottom:4px}
+.sec-sub{color:var(--dim);font-size:9.4pt;margin-bottom:13px;max-width:58ch}
+
+/* ---------- preguntas ---------- */
+/* Sin break-inside:avoid aca: un grupo de 17 preguntas no entra en una hoja y
+   Chrome resuelve el conflicto dejando la anterior en blanco. Va en .q, que si entra. */
+.qgroup{margin-bottom:17px}
+.qgroup-title{break-after:avoid;
+  font-family:"JetBrains Mono",monospace;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ember);border-bottom:1px solid var(--rule);padding-bottom:5px;margin-bottom:9px;
+  display:flex;justify-content:space-between;
+}
+.qgroup-title em{font-style:normal;color:var(--dim)}
+.q{display:flex;gap:9px;margin-bottom:9px;break-inside:avoid;align-items:flex-start}
+.q .box{
+  flex:0 0 auto;width:9px;height:9px;border:1px solid #b8b1a6;border-radius:2px;margin-top:4px;
+}
+.q .body{flex:1}
+.q p{margin:0}
+.q .hint{color:var(--dim);font-size:8.6pt;line-height:1.4;margin-top:1px}
+.q .opts{color:var(--ink-soft);font-size:8.8pt;margin-top:2px}
+.q .opts b{font-weight:500}
+.crit{color:var(--ember);font-weight:600}
+
+.answerlines{margin:6px 0 0}
+.answerlines div{border-bottom:1px solid var(--rule);height:15px}
+
+/* ---------- mapa 2x2 ---------- */
+.map{
+  border:1px solid var(--rule);border-radius:6px;padding:13px;margin:4px 0 12px;
+  display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;
+  gap:11px 12px;align-items:center;font-size:8.8pt;
+}
+.map .axis-x{text-align:center;color:var(--dim);font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;padding-bottom:2px}
+.map .axis-y{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--dim);text-align:center;font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;height:100%}
+.map .cell{border:1px solid var(--rule);border-radius:4px;padding:8px 11px;min-height:46px}
+.map .cell b{display:block;font-family:"Bricolage Grotesque",serif;font-size:11pt;font-weight:600;margin-bottom:2px}
+.map .cell span{color:var(--dim);font-size:8.4pt;line-height:1.35;display:block}
+
+/* ---------- mockups de paleta ---------- */
+.dirs{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.dir{break-inside:avoid}
+.mock{border-radius:6px;overflow:hidden;height:118px;display:flex;flex-direction:column;position:relative}
+.mock .bar{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;font-size:5.6pt;letter-spacing:.08em;text-transform:uppercase}
+.mock .bar .lg{display:flex;align-items:center;gap:5px;font-weight:600;letter-spacing:.04em}
+.mock .bar .lg i{font-style:normal;font-size:9pt;line-height:1;letter-spacing:-.06em}
+.mock .bar nav{display:flex;gap:8px;opacity:.75}
+.mock .bar .cta{padding:3px 7px;border-radius:3px;font-weight:600;letter-spacing:.06em}
+.mock .body{flex:1;padding:11px 10px 10px;display:flex;flex-direction:column;justify-content:flex-end}
+.mock h5{font-size:13pt;line-height:1.06;font-weight:600;letter-spacing:-.02em}
+.mock .sub{font-size:5.8pt;line-height:1.4;margin-top:5px;max-width:34ch}
+.mock .btns{display:flex;gap:5px;margin-top:8px}
+.mock .btns span{font-size:5.4pt;letter-spacing:.07em;text-transform:uppercase;padding:4px 8px;border-radius:3px;font-weight:600}
+
+.dir-meta{margin-top:8px}
+.dir-meta h4{font-size:11.5pt;display:flex;align-items:baseline;gap:6px}
+.dir-meta h4 em{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:7pt;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.dir-meta p{font-size:8.6pt;color:var(--ink-soft);line-height:1.42;margin-top:3px}
+.dir-meta .warn{color:var(--ember)}
+.swatches{display:flex;gap:4px;margin-top:6px;align-items:center}
+.swatches i{width:15px;height:15px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,.09)}
+.swatches code{font-family:"JetBrains Mono",monospace;font-size:6.6pt;color:var(--dim);margin-left:3px}
+
+.note{border-left:2px solid var(--ember);padding:8px 0 8px 12px;margin-top:8px;font-size:9pt;color:var(--ink-soft);max-width:62ch}
+.note b{font-weight:600;color:var(--ink)}
+
+/* ---------- pasos ---------- */
+.steps{display:grid;gap:0;margin-top:6px}
+.step{display:grid;grid-template-columns:20px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.step:last-child{border-bottom:0}
+.step .k{font-family:"JetBrains Mono",monospace;font-size:8pt;color:var(--ember);padding-top:2px}
+.step h4{font-size:11.5pt;margin-bottom:2px}
+.step p{font-size:9pt;color:var(--ink-soft);max-width:58ch}
+
+.foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--dim)}
+.foot b{font-weight:600;color:var(--ink);display:block;font-size:9pt}
+
+/* ---------- tablas de precio ---------- */
+.precio{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:9.4pt}
+.precio th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:7.2pt;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--rule);padding:0 10px 6px 0;font-weight:400}
+.precio td{padding:8px 10px 8px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.precio td:last-child,.precio th:last-child{text-align:right;padding-right:0;white-space:nowrap}
+.precio .n{font-family:"JetBrains Mono",monospace;font-size:9pt}
+.precio .sub{display:block;color:var(--dim);font-size:8.2pt;line-height:1.35;margin-top:2px}
+.precio tr.total td{border-bottom:0;border-top:1.5px solid var(--ink);font-weight:600;padding-top:10px}
+.precio tr.recomendada td{background:#faf6f2}
+.chip{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:6.6pt;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ember);border:1px solid var(--ember);border-radius:3px;padding:1px 5px;margin-left:6px}
+.grande{font-family:"Bricolage Grotesque",serif;font-weight:600;font-size:26pt;letter-spacing:-.02em;line-height:1}
+.grande small{font-family:"Inter Tight",sans-serif;font-size:10pt;font-weight:400;color:var(--dim);letter-spacing:0}
+.caja{border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin-top:14px}
+.caja h4{font-size:11pt;margin-bottom:5px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+ul.lista{list-style:none;margin:8px 0 0}
+ul.lista li{padding-left:16px;position:relative;margin-bottom:6px;font-size:9.4pt;line-height:1.5}
+ul.lista li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--ember)}
+ul.lista li.no::before{background:var(--rule)}
+ul.lista li.no{color:var(--dim)}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="brandline"><div class="disc"></div><span>SurLabs</span></div>
+  <h1>Propuesta para el sitio de Abelleira &amp; Piedra</h1>
+  <p class="lead">Qué incluye, qué cuesta una vez, y sobre todo qué costo fijo les queda a ustedes todos los años. Esto último es lo que casi nunca se dice y es lo que importa.</p>
+  <div class="cover-rule"></div>
+  <div class="cover-meta">
+    <div><strong>Para</strong>Abelleira &amp; Piedra Abogados</div>
+    <div><strong>De</strong>SurLabs, Montevideo</div>
+    <div><strong>Fecha</strong>20 de agosto de 2026</div>
+    <div><strong>Validez</strong>30 días</div>
+  </div>
+</section>
+
+<!-- ============ RESUMEN ============ -->
+<section class="sheet">
+  <div class="phead"><div class="mono">Resumen</div><div class="n">Abelleira &amp; Piedra</div></div>
+
+  <h2 class="sec">Los tres números</h2>
+  <p class="sec-sub">El detalle de cada uno está en las páginas siguientes.</p>
+
+  <div class="dos">
+    <div class="caja">
+      <p class="tipo-etiqueta" style="font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.09em;text-transform:uppercase;color:#6b665e">Una sola vez</p>
+      <p class="grande" style="margin-top:8px">USD 170 <small>el sitio</small></p>
+      <p style="font-size:9pt;color:#3d3a35;margin-top:8px">Diseño, desarrollo y publicación del sitio completo.</p>
+    </div>
+    <div class="caja">
+      <p class="tipo-etiqueta" style="font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.09em;text-transform:uppercase;color:#6b665e">Una sola vez</p>
+      <p class="grande" style="margin-top:8px">USD 80 <small>la puesta en marcha</small></p>
+      <p style="font-size:9pt;color:#3d3a35;margin-top:8px">Compra del dominio, configuración del correo y de la infraestructura, a nombre de ustedes.</p>
+    </div>
+  </div>
+
+  <div class="caja" style="border-color:#c9440d">
+    <p class="tipo-etiqueta" style="font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.09em;text-transform:uppercase;color:#c9440d">Todos los años, de ustedes</p>
+    <p class="grande" style="margin-top:8px">USD 70 <small>por año, unos 6 por mes</small></p>
+    <p style="font-size:9pt;color:#3d3a35;margin-top:8px">
+      Dominio más correo, con la opción de correo que recomendamos. Si eligen Outlook de Microsoft
+      sube a USD 214 por año. El hosting del sitio no cuesta nada, y en la página 4 explicamos por qué
+      y hasta cuándo.
+    </p>
+  </div>
+
+  <div class="note">
+    <b>Ese número de USD 70 no nos lo pagan a nosotros.</b> Son servicios de terceros que se
+    contratan a nombre del estudio: el dominio y el correo. Nosotros no ponemos ningún abono
+    encima, y si mañana trabajan con otro proveedor esas cuentas siguen siendo de ustedes.
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>1 de 6</div></div>
+</section>
+
+<!-- ============ EL SITIO ============ -->
+<section class="sheet">
+  <div class="phead"><div class="mono">1 · El sitio</div><div class="n">USD 170, una sola vez</div></div>
+
+  <h2 class="sec">Qué incluye</h2>
+
+  <ul class="lista">
+    <li>Sitio de una página con las secciones que ya vieron: inicio, áreas de práctica, el estudio, equipo y contacto.</li>
+    <li>Diseño propio en la dirección visual que eligieron, no una plantilla.</li>
+    <li>Adaptado a celular, que es por donde va a entrar la mayoría.</li>
+    <li>Formulario de contacto que abre WhatsApp con el mensaje ya armado, más la casilla de correo.</li>
+    <li>Medición de visitas sin cookies, así no hace falta el cartel de consentimiento.</li>
+    <li>Publicación y puesta en línea.</li>
+    <li>Dos rondas de correcciones sobre el diseño y dos sobre los textos.</li>
+  </ul>
+
+  <h2 class="sec" style="margin-top:26px">Qué no incluye</h2>
+  <p class="sec-sub">No porque no se pueda, sino porque hoy no están las condiciones o lo dejaron para después. Se cotiza aparte cuando lo quieran.</p>
+
+  <ul class="lista">
+    <li class="no">Sesión de fotos de las personas y de la oficina. Ustedes la dejaron para después del lanzamiento.</li>
+    <li class="no">Publicar la dirección y el mapa, hasta que estén instalados en la oficina nueva.</li>
+    <li class="no">Ficha de Empresa de Google. Es gratis y es lo que más mueve las búsquedas locales, pero es un trámite aparte.</li>
+    <li class="no">Política de privacidad y términos de uso. Los redactan ustedes y nosotros los publicamos.</li>
+    <li class="no">Diseño de logo. Nos dijeron que lo resuelven por su lado.</li>
+    <li class="no">Una página por área de práctica, que es lo que haría falta para competir en Google por consultas nuevas.</li>
+    <li class="no">Correcciones más allá de las cuatro rondas incluidas.</li>
+  </ul>
+
+  <div class="note">
+    <b>Una aclaración que preferimos hacer ahora.</b> Nos dijeron dos cosas distintas: que la web es
+    de respaldo para quien ya llega recomendado, y que a los seis meses tendría que haber generado
+    consultas nuevas. Son dos sitios distintos. Este presupuesto cubre el primero, que es el que se
+    puede hacer con lo que hoy está confirmado. Para el segundo hacen falta las fotos, la dirección
+    publicada, la Ficha de Google y una página por área, y conviene charlarlo antes de arrancar.
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>2 de 6</div></div>
+</section>
+
+<!-- ============ DOMINIO ============ -->
+<section class="sheet">
+  <div class="phead"><div class="mono">2 · El dominio</div><div class="n">De ustedes, todos los años</div></div>
+
+  <h2 class="sec">La dirección del estudio en internet</h2>
+  <p class="sec-sub">Hoy no tienen ninguno. El nombre está libre, lo verificamos.</p>
+
+  <table class="precio">
+    <tr><th>Opción</th><th>Por año</th></tr>
+    <tr class="recomendada">
+      <td><b>abelleirapiedra.com.uy</b> <span class="chip">Recomendado</span>
+        <span class="sub">El estándar uruguayo. Para un estudio de Montevideo dice de entrada dónde están, y Google lo toma como señal para las búsquedas locales. Pide documentación del titular y no se activa el mismo día.</span></td>
+      <td class="n">USD 25 a 35</td>
+    </tr>
+    <tr>
+      <td><b>abelleirapiedra.com</b>
+        <span class="sub">Internacional, se activa al instante y es el más barato. Conviene tenerlo igual aunque no sea el principal, para que nadie más lo registre.</span></td>
+      <td class="n">USD 11</td>
+    </tr>
+    <tr>
+      <td>abelleirapiedra.uy
+        <span class="sub">Más corto. El precio varía bastante según el registrador, hay que confirmarlo.</span></td>
+      <td class="n">a confirmar</td>
+    </tr>
+    <tr class="total"><td>Los dos recomendados, .com.uy más .com</td><td class="n">USD 46</td></tr>
+  </table>
+
+  <p style="font-size:9pt;color:#3d3a35;margin-top:14px">
+    El rango del .com.uy es porque el precio cambia según el registrador: vimos USD 25 citado por
+    NIC Uruguay y USD 35 en un registrador local. Lo cerramos antes de comprar.
+  </p>
+
+  <div class="caja">
+    <h4>A nombre de quién queda</h4>
+    <p style="font-size:9pt;color:#3d3a35">
+      Del estudio, como pidieron. Nosotros quedamos como usuarios de trabajo para poder configurarlo.
+      El dominio se renueva todos los años mientras el sitio exista, así que necesitamos una persona y
+      una casilla del estudio a donde lleguen los avisos de vencimiento. Un dominio vencido tira abajo
+      el sitio y el correo al mismo tiempo.
+    </p>
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>3 de 6</div></div>
+</section>
+
+<!-- ============ CORREO ============ -->
+<section class="sheet">
+  <div class="phead"><div class="mono">3 · El correo</div><div class="n">De ustedes, todos los años</div></div>
+
+  <h2 class="sec">Pasar de Gmail y Hotmail a una casilla del estudio</h2>
+  <p class="sec-sub">Hoy usan abelleirajimena@gmail.com y danielpiedra@hotmail.com. Para un estudio jurídico, escribir desde una dirección con el nombre del estudio cambia la primera impresión más de lo que parece. Precios para dos casillas.</p>
+
+  <table class="precio">
+    <tr><th>Opción</th><th>Por año, dos casillas</th></tr>
+    <tr class="recomendada">
+      <td><b>Zoho Mail</b> <span class="chip">Recomendado</span>
+        <span class="sub">Correo profesional con el dominio del estudio. Funciona con Outlook de escritorio, con el celular y con la web. Es la misma que usamos nosotros.</span></td>
+      <td class="n">USD 24</td>
+    </tr>
+    <tr>
+      <td><b>Microsoft 365 Business Basic</b>
+        <span class="sub">Outlook en web y celular, más Teams y OneDrive. No incluye Word ni Excel instalados en la computadora.</span></td>
+      <td class="n">USD 168</td>
+    </tr>
+    <tr>
+      <td><b>Microsoft 365 Business Standard</b>
+        <span class="sub">Todo lo anterior más Word, Excel y Outlook instalados. Es lo que la mayoría entiende por "tener Office".</span></td>
+      <td class="n">USD 336</td>
+    </tr>
+    <tr>
+      <td>Google Workspace Business Starter
+        <span class="sub">Gmail con el dominio del estudio, 30 GB por casilla.</span></td>
+      <td class="n">USD 168</td>
+    </tr>
+  </table>
+
+  <div class="caja">
+    <h4>Por qué recomendamos Zoho y no Outlook</h4>
+    <p style="font-size:9pt;color:#3d3a35">
+      Nos dijeron que no querían un costo fijo alto. Zoho hace lo mismo que necesitan por catorce
+      veces menos que Microsoft 365 Standard, y se puede leer igual desde Outlook de escritorio si
+      es lo que están acostumbrados a usar.
+    </p>
+    <p style="font-size:9pt;color:#3d3a35;margin-top:8px">
+      Ahora, si ya pagan Office o lo van a pagar igual para Word y Excel, el correo les viene
+      incluido y Microsoft 365 pasa a ser la opción sensata. Dígannos si ya tienen Office y
+      recalculamos.
+    </p>
+    <p style="font-size:9pt;color:#3d3a35;margin-top:8px">
+      Zoho tiene un plan gratuito, pero no sirve para este caso: no permite conectar Outlook ni
+      ningún programa de correo, solo su propia web y su app. Preferimos decirlo antes y no que se
+      encuentren con la limitación después.
+    </p>
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>4 de 6</div></div>
+</section>
+
+<!-- ============ TOTALES ============ -->
+<section class="sheet">
+  <div class="phead"><div class="mono">4 · Los totales</div><div class="n">Abelleira &amp; Piedra</div></div>
+
+  <h2 class="sec">Lo que pagan una vez</h2>
+  <table class="precio">
+    <tr><th>Concepto</th><th>Importe</th></tr>
+    <tr><td>El sitio<span class="sub">Diseño, desarrollo, publicación y cuatro rondas de corrección.</span></td><td class="n">USD 170</td></tr>
+    <tr><td>Puesta en marcha<span class="sub">Compra y configuración del dominio, alta de las casillas, conexión con el sitio, y las claves entregadas por escrito.</span></td><td class="n">USD 80</td></tr>
+    <tr class="total"><td>Total una sola vez</td><td class="n">USD 250</td></tr>
+  </table>
+
+  <h2 class="sec" style="margin-top:26px">Lo que pagan todos los años</h2>
+  <p class="sec-sub">Esto no nos lo pagan a nosotros. Son servicios contratados a nombre del estudio.</p>
+
+  <table class="precio">
+    <tr><th>Concepto</th><th>Por año</th></tr>
+    <tr><td>Dominio .com.uy más .com</td><td class="n">USD 46</td></tr>
+    <tr><td>Correo Zoho, dos casillas</td><td class="n">USD 24</td></tr>
+    <tr><td>Hosting del sitio<span class="sub">Sin costo. El sitio es liviano y entra holgado en el plan gratuito de Vercel. Si algún día recibiera muchísimo tráfico habría que pasar a un plan pago, y les avisaríamos antes.</span></td><td class="n">USD 0</td></tr>
+    <tr class="total"><td>Total por año</td><td class="n">USD 70</td></tr>
+  </table>
+
+  <p style="font-size:9.4pt;color:#3d3a35;margin-top:12px">
+    Son unos <b>USD 6 por mes</b>. Si eligen Microsoft 365 Business Standard en lugar de Zoho, el
+    total anual pasa a <b>USD 382</b>, unos 32 por mes.
+  </p>
+
+  <div class="note">
+    <b>Qué no está incluido y algún día va a hacer falta.</b> Cambios sobre el sitio ya publicado
+    después de las cuatro rondas, la sesión de fotos, y el diseño de las páginas por área si más
+    adelante quieren competir por consultas nuevas en Google. Nada de eso se hace sin que ustedes
+    lo aprueben con el precio delante.
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>5 de 6</div></div>
+</section>
+
+<section class="sheet">
+  <div class="phead"><div class="mono">5 · Cómo seguimos</div><div class="n">Abelleira &amp; Piedra</div></div>
+
+  <h2 class="sec">Los próximos pasos</h2>
+  <p class="sec-sub">El orden importa: el dominio es lo que más demora y todo lo demás depende de él.</p>
+
+  <div class="steps">
+    <div class="step"><div class="k">01</div><div><h4>Nos confirman esta propuesta</h4><p>Y de paso nos dicen si ya pagan Office, que cambia la recomendación del correo.</p></div></div>
+    <div class="step"><div class="k">02</div><div><h4>Compramos el dominio</h4><p>Es lo que más demora porque el .com.uy pide documentación y no se activa el mismo día. Conviene arrancarlo antes que nada.</p></div></div>
+    <div class="step"><div class="k">03</div><div><h4>Nos mandan lo que falta</h4><p>El número de WhatsApp nuevo, la frase propia que nos dijeron que tienen, y los textos.</p></div></div>
+    <div class="step"><div class="k">04</div><div><h4>Les mostramos el sitio con sus datos reales</h4><p>Y de ahí salen las rondas de corrección.</p></div></div>
+    <div class="step"><div class="k">05</div><div><h4>Publicamos</h4><p>Con las claves de todo entregadas a nombre del estudio.</p></div></div>
+  </div>
+
+  <div class="foot"><div><b>SurLabs</b>Montevideo, Uruguay</div><div>6 de 6</div></div>
+</section>
+
+</body>
+</html>
