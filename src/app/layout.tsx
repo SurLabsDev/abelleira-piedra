@@ -22,8 +22,11 @@ const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tig
 export const metadata: Metadata = {
     // PENDIENTE (brief 1.1 y 1.3): dominio propio y nombre exacto del estudio.
     title: `${ESTUDIO} ${ESTUDIO_BAJADA} | Montevideo`,
+    // Las areas van aca tambien: esta linea es la que se ve en la
+    // previsualizacion cuando alguien comparte el link por WhatsApp, y quedo
+    // con las areas de la demo despues de corregir el resto del sitio.
     description:
-        "Estudio jurídico en Montevideo. Asesoramiento en derecho laboral, sucesorio, inmobiliario, comercial y civil, y representación en juicio.",
+        "Estudio jurídico en Montevideo. Derecho penal, laboral, de familia y civil. El trabajo lo hacemos nosotros, no se delega en nadie.",
     robots: { index: false, follow: false }, // hasta que el contenido sea real
 };
 
